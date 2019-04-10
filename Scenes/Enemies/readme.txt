@@ -1,1 +1,1 @@
-This is where you put enemies
+This is where you put enemy scenes
