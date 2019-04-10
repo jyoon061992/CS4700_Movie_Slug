@@ -1,1 +1,1 @@
-This is where you put levels.
+This is where you put level scenes.
