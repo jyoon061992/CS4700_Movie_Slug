@@ -5,8 +5,10 @@ export var speed = 30
 export var health = 1
 export var ledgeDetection = false
 export var removeCorpse = false
+export var shooter = false
 
 const FLOOR = Vector2(0, -1)
+const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
 
 var velocity = Vector2()
 var direction = Global.direction.moveRight
@@ -14,7 +16,7 @@ var isDead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$"Line of sight".add_exception($CollisionShape2D)
 
 func dead():
 	isDead = true
@@ -33,6 +35,12 @@ func _physics_process(delta):
 		# flip the direction
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
+		$Position2D.position.x *= -1
+		$"Line of sight".position.x *= -1
+	
+	if $"Line of sight".is_colliding() and shooter:
+		shoot()
+
 
 func _on_Timer_timeout():
 	queue_free()
@@ -55,3 +63,14 @@ func decreaseHealth(amount):
 	
 	if health <= 0:
 		dead()
+		
+func shoot():
+	var bullet = BULLET.instance()
+	
+	if sign($Position2D.position.x) == Global.direction.moveRight:
+		bullet.setBulletDirection(Global.direction.moveRight)
+	else:
+		bullet.setBulletDirection(Global.direction.moveLeft)
+		
+	get_parent().add_child(bullet)
+	bullet.position = $Position2D.global_position

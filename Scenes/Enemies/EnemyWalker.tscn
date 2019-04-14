@@ -24,11 +24,8 @@ animations = [ {
 extents = Vector2( 9.08587, 11.8275 )
 
 [node name="EnemyWalker" type="KinematicBody2D"]
-position = Vector2( -0.101158, -6.46636 )
+position = Vector2( 2.71179, -5.58732 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0677948, -0.00664139 )
@@ -43,6 +40,15 @@ shape = SubResource( 2 )
 position = Vector2( 6.88589, 5.34521 )
 enabled = true
 cast_to = Vector2( 0, 16 )
+
+[node name="Line of sight" type="RayCast2D" parent="."]
+position = Vector2( 4.92266, 5.09845 )
+rotation = -1.57018
+enabled = true
+cast_to = Vector2( 0, 60 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 27.4262, -7.73559 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
