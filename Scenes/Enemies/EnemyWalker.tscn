@@ -15,10 +15,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.4512, 15.8878 )
+extents = Vector2( 9.08587, 11.8275 )
 
 [node name="EnemyWalker" type="KinematicBody2D"]
-position = Vector2( 116.68, 73.484 )
+position = Vector2( -0.101158, -6.46636 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -26,16 +26,15 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0677948, -0.00664139 )
-scale = Vector2( 1.4375, 1.40625 )
 frames = SubResource( 1 )
 animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.183708, 6.3418 )
+position = Vector2( -1, 4.5 )
 shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 9.97102, 7.43869 )
+position = Vector2( 6.88589, 5.34521 )
 enabled = true
 cast_to = Vector2( 0, 16 )
 

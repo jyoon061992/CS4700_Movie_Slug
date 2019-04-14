@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Levels/HubWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/TempPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=5]
 
 [node name="HubWorld" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,4 +20,7 @@ tile_data = PoolIntArray( 0, 11, 0, 88, 9, 0, 89, 10, 0, 90, 10, 0, 91, 10, 0, 9
 
 [node name="NPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 672, 86.0099 )
+
+[node name="EnemyWalker" parent="." instance=ExtResource( 5 )]
+position = Vector2( 310.886, 91.0099 )
 
