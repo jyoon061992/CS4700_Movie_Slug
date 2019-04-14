@@ -1,12 +1,15 @@
 extends KinematicBody2D
 
-const SPEED = 60
-const GRAVITY = 10
-const JUMP_POWER = -250
+export var SPEED = 60
+export var GRAVITY = 10
+export var JUMP_POWER = -250
+export var Camera_Constraint_Right = 100000
 const FLOOR = Vector2(0, -1)
 
 var velocity = Vector2()
 
+func _ready():
+	get_node("Camera2D").limit_right = Camera_Constraint_Right
 
 func _physics_process(delta):
 	handle_movement(SPEED)
