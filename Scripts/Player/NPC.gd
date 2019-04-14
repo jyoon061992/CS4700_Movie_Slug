@@ -15,19 +15,25 @@ func _ready():
 	$NPCArea2D.connect("area_exited", self, "playerExited")
 
 func _physics_process(delta):
+	move()
+	handle_animation()
+	handle_collision()
+
+func move():
 	velocity.x = 0 if playerOnConnect else SPEED * direction
-	
 	velocity.y += GRAVITY
+	velocity = move_and_slide(velocity, FLOOR)
 	
+
+func handle_animation():
 	$AnimatedSprite.flip_h = !direction == Global.direction.moveRight
 	
 	if playerOnConnect:
 		$AnimatedSprite.play("idle")
 	else:
 		$AnimatedSprite.play("walk")
-	
-	velocity = move_and_slide(velocity, FLOOR)
-	
+
+func handle_collision():
 	if is_on_wall() or !$RayCast2D.is_colliding():
 		direction = -direction
 		$RayCast2D.position.x *= -1
