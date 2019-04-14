@@ -19,16 +19,10 @@ config/name="Movie-Slug"
 run/main_scene="res://Scenes/Levels/HubWorld.tscn"
 config/icon="res://icon.png"
 
-[display]
+[autoload]
 
-window/size/width=320
-window/size/height=160
-window/size/test_width=1280
-window/size/test_height=720
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+Global="*res://Scripts/global.gd"
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
