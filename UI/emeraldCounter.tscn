@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Counter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/GUI/emeralds_icon.png" type="Texture" id=2]
+
+[node name="Counter" index="0" instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_right = 0.0
+
+[node name="Icon" parent="Background" index="0"]
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+

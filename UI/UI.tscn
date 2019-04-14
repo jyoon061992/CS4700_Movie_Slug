@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/UI.gd" type="Script" id=1]
+[ext_resource path="res://UI/LifeBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/EnergyBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/emeraldCounter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/BombCounter.tscn" type="PackedScene" id=5]
+
+[node name="UI" type="MarginContainer"]
+margin_left = -3.67545
+margin_top = -7.35092
+margin_right = 640.325
+margin_bottom = 129.649
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HBX" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 624.0
+margin_bottom = 117.0
+
+[node name="Bars" type="VBoxContainer" parent="HBX"]
+margin_right = 500.0
+margin_bottom = 97.0
+size_flags_horizontal = 3
+
+[node name="Health" parent="HBX/Bars" instance=ExtResource( 2 )]
+
+[node name="Energy" parent="HBX/Bars" instance=ExtResource( 3 )]
+margin_top = 57.0
+margin_bottom = 97.0
+
+[node name="Counters" type="VBoxContainer" parent="HBX"]
+margin_left = 504.0
+margin_right = 604.0
+margin_bottom = 97.0
+
+[node name="Counter2" parent="HBX/Counters" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
+margin_right = 100.0
+
+[node name="Counter" parent="HBX/Counters" instance=ExtResource( 5 )]
+margin_top = 44.0
+margin_bottom = 84.0
+
