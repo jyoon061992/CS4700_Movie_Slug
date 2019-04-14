@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player/TempPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_00.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.55988, 10.0139 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.57096, 10 )
 
 [node name="TempPlayer" type="KinematicBody2D"]
 position = Vector2( 0, -5 )
@@ -29,4 +32,10 @@ limit_top = 0
 limit_bottom = 180
 smoothing_enabled = true
 smoothing_speed = 10.0
+
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+position = Vector2( 0.5, 6 )
+shape = SubResource( 2 )
 
