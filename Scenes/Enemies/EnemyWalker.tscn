@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Enemies/EnemyWalker.gd" type="Script" id=1]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_46.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_47.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_48.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_49.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.4512, 15.8878 )
+
+[node name="EnemyWalker" type="KinematicBody2D"]
+position = Vector2( 116.68, 73.484 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.0677948, -0.00664139 )
+scale = Vector2( 1.4375, 1.40625 )
+frames = SubResource( 1 )
+animation = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.183708, 6.3418 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 9.97102, 7.43869 )
+enabled = true
+cast_to = Vector2( 0, 16 )
+
