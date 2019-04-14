@@ -1,9 +1,9 @@
 extends Area2D
 
-const SPEED = 200
+export var SPEED = 200
+export var damage = 1
 var velocity = Vector2()
-var direction = 1
-
+var direction = Global.direction.moveRight
 
 func _ready():
 	pass
@@ -25,5 +25,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_fireball_body_entered(body):
+	if "Enemy" in body.name:
+		body.decreaseHealth(damage)
+		
 	queue_free()
 	pass
