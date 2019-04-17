@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var gravity = 10
 export var speed = 30
-export var health = 1
+export var health = 3
 export var ledgeDetection = false
 export var removeCorpse = false
 export var shooter = false
@@ -38,9 +38,18 @@ func _physics_process(delta):
 		$Position2D.position.x *= -1
 		$"Line of sight".position.x *= -1
 	
+	
 	if $"Line of sight".is_colliding() and shooter:
 		shoot()
-
+	
+	
+	#This was Added so ememy running into player would cause damage
+	if get_slide_count() > 0:
+		for i in range(get_slide_count()):
+			if "player" in get_slide_collision(i).collider.name:
+				get_slide_collision(i).collider.take_damage(1)
+				break
+	#End  player damage code
 
 func _on_Timer_timeout():
 	queue_free()
@@ -66,7 +75,6 @@ func decreaseHealth(amount):
 		
 func shoot():
 	var bullet = BULLET.instance()
-	
 	if sign($Position2D.position.x) == Global.direction.moveRight:
 		bullet.setBulletDirection(Global.direction.moveRight)
 	else:
