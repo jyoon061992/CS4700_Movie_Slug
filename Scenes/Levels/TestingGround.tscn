@@ -38,6 +38,7 @@ removeCorpse = true
 
 [node name="EnemyWalker4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 637.432, 100.639 )
+speed = 80
 ledgeDetection = true
 removeCorpse = true
 
