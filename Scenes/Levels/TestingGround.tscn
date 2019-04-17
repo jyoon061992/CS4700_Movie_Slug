@@ -25,30 +25,45 @@ collision_mask = 2
 
 [node name="EnemyWalker" parent="." instance=ExtResource( 4 )]
 position = Vector2( 310.886, 91.0099 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 453.71, 131.923 )
+removeCorpse = true
 
 [node name="EnemyWalker3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 105.036, 130.785 )
+removeCorpse = true
 
 [node name="EnemyWalker4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 637.432, 100.639 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 854.328, 99.5012 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 753.651, 69.9237 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1039.19, 48.8781 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1227.46, 100.639 )
+ledgeDetection = true
+removeCorpse = true
 
 [node name="EnemyWalker9" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1336.14, 116.565 )
+removeCorpse = true
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 27.0763, 75.9873 )
