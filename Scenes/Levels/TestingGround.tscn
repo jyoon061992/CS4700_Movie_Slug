@@ -52,6 +52,7 @@ position = Vector2( 1336.14, 116.565 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 27.0763, 75.9873 )
+Camera_Constraint_Right = 1424
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
