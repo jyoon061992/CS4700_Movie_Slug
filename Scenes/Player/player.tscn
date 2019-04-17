@@ -1,7 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player/player.gd" type="Script" id=1]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_00.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_28.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_29.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_30.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_31.png" type="Texture" id=5]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_32.png" type="Texture" id=6]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_36.png" type="Texture" id=7]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_37.png" type="Texture" id=8]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_38.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_39.png" type="Texture" id=10]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_40.png" type="Texture" id=11]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_33.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.72942, 10.6999 )
@@ -9,13 +37,12 @@ extents = Vector2( 7.72942, 10.6999 )
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 34.4707, 150.5 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.963348, -5.09434 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5.5293, 249.5 )
+frames = SubResource( 2 )
+animation = "walk"
+offset = Vector2( -6.49265, -254.594 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.751038, -0.250338 )
@@ -23,4 +50,17 @@ shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 18.0248, -0.500689 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -35.8383, -29.3223 )
+current = true
+process_mode = 0
+limit_left = 0
+limit_top = 0
+limit_bottom = 180
+smoothing_enabled = true
+smoothing_speed = 10.0
+__meta__ = {
+"_edit_group_": true
+}
 
