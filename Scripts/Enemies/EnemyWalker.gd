@@ -38,14 +38,14 @@ func _physics_process(delta):
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
 		$Position2D.position.x *= -1
-		$"Line of sight".position.x *= -1
+		$"Line of sight".rotate(PI)
 	
 	
 	if $"Line of sight".is_colliding() and shooter:
-		var collider = $"Line of sight".get_collider_shape()
+		var collider = $"Line of sight".get_collider()
 		print(collider)
-		# if collider.() == "player":
-		# 	shoot()
+		# if collider. == "KinematicBody2D":
+		#	shoot()
 	
 	
 	#This was Added so ememy running into player would cause damage
