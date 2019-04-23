@@ -43,9 +43,9 @@ func _physics_process(delta):
 	
 	if $"Line of sight".is_colliding() and shooter:
 		var collider = $"Line of sight".get_collider()
-		print(collider)
-		# if collider. == "KinematicBody2D":
-		#	shoot()
+		# print(collider.get_class())
+		if collider.get_class() == "KinematicBody2D":
+			shoot()
 	
 	
 	#This was Added so ememy running into player would cause damage
