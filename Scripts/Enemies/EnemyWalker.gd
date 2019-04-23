@@ -9,6 +9,7 @@ export var shooter = false
 
 const FLOOR = Vector2(0, -1)
 const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
+const COIN = preload("res://Scenes/Items/Coin.tscn")
 
 var velocity = Vector2()
 var direction = Global.direction.moveRight
@@ -23,6 +24,7 @@ func dead():
 	velocity = Vector2(0, 0)
 	$AnimatedSprite.play("dead")
 	$CollisionShape2D.call_deferred("set_disabled", true)
+	dropCoin()
 	
 	if removeCorpse:
 		$Timer.start()
@@ -40,7 +42,10 @@ func _physics_process(delta):
 	
 	
 	if $"Line of sight".is_colliding() and shooter:
-		shoot()
+		var collider = $"Line of sight".get_collider_shape()
+		print(collider)
+		# if collider.() == "player":
+		# 	shoot()
 	
 	
 	#This was Added so ememy running into player would cause damage
@@ -82,3 +87,9 @@ func shoot():
 		
 	get_parent().add_child(bullet)
 	bullet.position = $Position2D.global_position
+	
+func dropCoin():
+	var coin = COIN.instance()
+	get_parent().add_child(coin)
+	coin.position = $Position2D.global_position
+
