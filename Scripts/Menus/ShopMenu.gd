@@ -1,13 +1,18 @@
 extends Control
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for i in range(Global.items.size()):
+		var itemBtn = preload("res://Scenes/Menus/Button/ItemButton.tscn").instance()
+		itemBtn._set_item_name(Global.items[i])
+		itemBtn._set_item_price(str(Global.items_price[i]))
+		itemBtn._set_item_index(i)
+		# Testing texture 
+		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+Global.items_icon[0])
+		$CenterContainer/GridContainer.add_child(itemBtn)
 	hide()
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _physics_process(delta):

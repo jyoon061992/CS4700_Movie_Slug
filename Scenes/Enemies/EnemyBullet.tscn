@@ -30,7 +30,7 @@ position = Vector2( 0, 9.31787 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -2.44379e-06, 9.14207 )
+position = Vector2( -2.44379e-006, 9.14207 )
 scale = Vector2( 0.859353, 0.736287 )
 
 [connection signal="body_entered" from="." to="." method="_on_EnemyBullet_body_entered"]
