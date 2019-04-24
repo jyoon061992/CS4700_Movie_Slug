@@ -15,6 +15,8 @@ var out_of_energy = false
 
 export var max_health = 100
 export var max_energy = 100
+export var starting_coins = 10
+var coins = starting_coins
 var health = max_health
 var shot = max_energy
 var dead = false
@@ -111,6 +113,7 @@ func reload():
 	if shot >0:
 		out_of_energy = false
 	emit_signal("shooting",shot)
+	
 func shoot():
 	shot -= 10
 	if shot <=0:
@@ -118,3 +121,10 @@ func shoot():
 	emit_signal("shooting",shot)
 	pass
 	
+# Returns true so coin can be cleared in Coin script
+func add_coins(amount):
+	coins += amount
+	print("total coins: ")
+	print (coins)
+	
+	return true
