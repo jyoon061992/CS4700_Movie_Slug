@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Player/player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_28.png" type="Texture" id=2]
@@ -34,6 +34,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.72942, 10.6999 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7.48066, 11.073 )
+
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 34.4707, 150.5 )
 script = ExtResource( 1 )
@@ -45,6 +48,7 @@ animation = "walk"
 offset = Vector2( -6.49265, -254.594 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.751038, -0.250338 )
 shape = SubResource( 2 )
 
@@ -63,4 +67,10 @@ smoothing_speed = 10.0
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+position = Vector2( -1, -0.5 )
+shape = SubResource( 3 )
 

@@ -16,6 +16,7 @@ var out_of_energy = false
 export var max_health = 100
 export var max_energy = 100
 export var starting_coins = 10
+export var can_shoot = true
 var coins = starting_coins
 var health = max_health
 var shot = max_energy
@@ -63,7 +64,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		reload()
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and can_shoot:
 		if out_of_energy:
 			return
 		var fireball = FIREBALL.instance()

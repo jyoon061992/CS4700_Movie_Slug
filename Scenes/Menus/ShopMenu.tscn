@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="ShopMenu" type="Control"]
+margin_right = 360.0
+margin_bottom = 180.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_right = 360.0
+margin_bottom = 176.0
+

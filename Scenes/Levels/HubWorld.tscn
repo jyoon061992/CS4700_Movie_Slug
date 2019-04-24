@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player/TempPlayer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Menus/ShopMenu.gd" type="Script" id=7]
 
 [node name="HubWorld" type="Node2D"]
 
@@ -27,15 +28,20 @@ collision_mask = 2
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )
+Camera_Constraint_Right = 368
+can_shoot = false
 
-[node name="TempPlayer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 80, 144.04 )
-
-[node name="UI" parent="." instance=ExtResource( 6 )]
+[node name="UI" parent="." instance=ExtResource( 5 )]
 margin_left = 2.55139
 margin_top = 1.52202
 margin_right = 727.551
 margin_bottom = 138.522
 rect_scale = Vector2( 0.3, 0.3 )
 
+[node name="ShopMenu" parent="." instance=ExtResource( 6 )]
+margin_bottom = 176.0
+script = ExtResource( 7 )
+
+[connection signal="close_shop" from="NPC" to="ShopMenu" method="_on_NPC_close_shop"]
+[connection signal="open_shop" from="NPC" to="ShopMenu" method="_on_NPC_open_shop"]
 [connection signal="health_changed" from="player" to="UI" method="_on_player_health_changed"]

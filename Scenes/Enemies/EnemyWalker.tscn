@@ -1,23 +1,23 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Enemies/EnemyWalker.gd" type="Script" id=1]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_46.png" type="Texture" id=2]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_47.png" type="Texture" id=3]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_48.png" type="Texture" id=4]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_49.png" type="Texture" id=5]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_64.png" type="Texture" id=6]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_64.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_46.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_47.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_48.png" type="Texture" id=5]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_49.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "walk",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "dead",
 "speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

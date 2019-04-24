@@ -10,6 +10,9 @@ var direction = Global.direction.moveRight
 var playerOnConnect = false
 var shopOpened = false
 
+signal open_shop
+signal close_shop
+
 func _ready():
 	$NPCArea2D.connect("area_entered", self, "playerEntered")
 	$NPCArea2D.connect("area_exited", self, "playerExited")
@@ -41,10 +44,10 @@ func handle_collision():
 func _input(event):
 	if playerOnConnect and Input.is_action_pressed("ui_accept") and !shopOpened:
 		shopOpened = true
-		print("Open Shop")
+		emit_signal("open_shop")
 	elif playerOnConnect and Input.is_action_pressed("ui_cancel") and shopOpened:
 		shopOpened = false
-		print("Close Shop")
+		emit_signal("close_shop")
 		
 func playerEntered(object):
 	playerOnConnect = object.get_name() == "PlayerArea2D"
@@ -53,3 +56,4 @@ func playerExited(object):
 	if object.get_name() == "PlayerArea2D":
 		playerOnConnect = false
 		shopOpened = false
+		emit_signal("close_shop")
