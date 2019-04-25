@@ -26,6 +26,7 @@ extents = Vector2( 9.08587, 11.8275 )
 [node name="EnemyWalker" type="KinematicBody2D"]
 position = Vector2( 2.71179, -5.58732 )
 script = ExtResource( 1 )
+shooter = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0677948, -0.00664139 )
@@ -52,6 +53,9 @@ position = Vector2( 27.4262, -7.73559 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="Shot delay" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

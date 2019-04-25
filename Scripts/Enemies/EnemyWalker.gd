@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if $"Line of sight".is_colliding() and shooter:
 		var collider = $"Line of sight".get_collider()
 		# print(collider.get_class())
-		if collider.get_class() == "KinematicBody2D":
+		if collider.get_class() == "KinematicBody2D" and $"Shot delay".time_left == 0:
 			shoot()
 	
 	
@@ -79,6 +79,7 @@ func decreaseHealth(amount):
 		dead()
 		
 func shoot():
+	$"Shot delay".start()
 	var bullet = BULLET.instance()
 	if sign($Position2D.position.x) == Global.direction.moveRight:
 		bullet.setBulletDirection(Global.direction.moveRight)
@@ -87,6 +88,7 @@ func shoot():
 		
 	get_parent().add_child(bullet)
 	bullet.position = $Position2D.global_position
+	
 	
 func dropCoin():
 	var coin = COIN.instance()
