@@ -48,14 +48,14 @@ func _physics_process(delta):
 	if $"Line of sight".is_colliding() and shooter:
 		var collider = $"Line of sight".get_collider()
 		# print(collider.get_class())
-		if collider.get_class() == "KinematicBody2D" and $"Shot delay".time_left == 0:
+		if collider.get_class() == "KinematicBody2D" and $"Shot delay".time_left == 0 and !isDead:
 			shoot()
 	
 	
 	#This was Added so ememy running into player would cause damage
 	if get_slide_count() > 0:
 		for i in range(get_slide_count()):
-			if "player" in get_slide_collision(i).collider.name:
+			if "player" in get_slide_collision(i).collider.name and !isDead:
 				get_slide_collision(i).collider.take_damage(1)
 				break
 	#End  player damage code
