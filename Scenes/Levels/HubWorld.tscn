@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=6]
 
 [node name="HubWorld" type="Node2D"]
 
@@ -24,7 +25,6 @@ collision_mask = 2
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 39.4658, 148.458 )
 Camera_Constraint_Right = 368
-can_shoot = false
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 margin_left = 2.55139
@@ -38,6 +38,11 @@ margin_left = 182.551
 margin_top = 80.0
 margin_right = 356.551
 margin_bottom = 174.0
+
+[node name="EnemyWalker" parent="." instance=ExtResource( 6 )]
+position = Vector2( 176, 144 )
+lineOfSightDistance = 1000
+atk_range = 1000
 
 [connection signal="close_shop" from="NPC" to="ShopMenu" method="_on_NPC_close_shop"]
 [connection signal="open_shop" from="NPC" to="ShopMenu" method="_on_NPC_open_shop"]

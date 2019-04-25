@@ -8,6 +8,7 @@ export var lineOfSightDistance = 60
 export var ledgeDetection = false
 export var removeCorpse = false
 export var shooter = false
+export var atk_range = 150
 
 const FLOOR = Vector2(0, -1)
 const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
@@ -85,6 +86,8 @@ func decreaseHealth(amount):
 func shoot():
 	$"Shot delay".start()
 	var bullet = BULLET.instance()
+	bullet.setInitialPosition(position.x)
+	bullet.setAtkRange(atk_range)
 	if sign($Position2D.position.x) == Global.direction.moveRight:
 		bullet.setBulletDirection(Global.direction.moveRight)
 	else:
@@ -92,7 +95,6 @@ func shoot():
 		
 	get_parent().add_child(bullet)
 	bullet.position = $Position2D.global_position
-	
 	
 func dropCoin():
 	var coin = COIN.instance()
