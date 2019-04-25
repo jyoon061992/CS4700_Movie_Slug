@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var gravity = 10
 export var speed = 30
 export var health = 3
+export var shotDelay = 1
 export var ledgeDetection = false
 export var removeCorpse = false
 export var shooter = false
@@ -18,6 +19,7 @@ var isDead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$"Line of sight".add_exception($CollisionShape2D)
+	$"Shot delay".set_wait_time(shotDelay)
 
 func dead():
 	isDead = true
