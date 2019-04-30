@@ -106,5 +106,7 @@ position = Vector2( 224, 96 )
 [node name="EnemyWalker18" parent="." instance=ExtResource( 4 )]
 position = Vector2( 64, 128 )
 
+[connection signal="bomb" from="player" to="CanvasLayer/UI" method="_on_player_bomb"]
+[connection signal="emerald" from="player" to="CanvasLayer/UI" method="_on_player_emerald"]
 [connection signal="health_changed" from="player" to="CanvasLayer/UI" method="_on_player_health_changed"]
 [connection signal="shooting" from="player" to="CanvasLayer/UI" method="_on_player_shooting"]

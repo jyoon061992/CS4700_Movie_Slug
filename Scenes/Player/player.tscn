@@ -6,12 +6,12 @@
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_30.png" type="Texture" id=4]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_31.png" type="Texture" id=5]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_32.png" type="Texture" id=6]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_33.png" type="Texture" id=7]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_36.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_37.png" type="Texture" id=9]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_38.png" type="Texture" id=10]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_39.png" type="Texture" id=11]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_40.png" type="Texture" id=12]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_36.png" type="Texture" id=7]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_37.png" type="Texture" id=8]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_38.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_39.png" type="Texture" id=10]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_40.png" type="Texture" id=11]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_33.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,14 +20,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "jump",
 "speed": 5.0
 } ]
 

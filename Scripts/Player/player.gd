@@ -12,15 +12,17 @@ export var Camera_Constraint_Right = 100000
 var velocity = Vector2()
 var on_ground = false
 var out_of_energy = false
+var out_of_bombs = false
 
 export var max_health = 100
 export var max_energy = 100
-export var starting_coins = 10
+export var starting_coins = 0
 export var can_shoot = true
 var coins = starting_coins
 var health = max_health
 var shot = max_energy
 var dead = false
+var bomb = 3
 
 # When the character dies, we fade the UI
 enum STATES {ALIVE, DEAD}
@@ -29,7 +31,8 @@ var state = STATES.ALIVE
 signal health_changed
 signal died
 signal shooting
-
+signal emerald
+signal bomb
 
 func _ready():
 	get_node("Camera2D").limit_right = Camera_Constraint_Right
@@ -63,6 +66,11 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_down"):
 		reload()
+		
+	if Input.is_action_just_pressed("ui_home"):
+		if out_of_bombs:
+			return
+		drop_bombs()
 
 	if Input.is_action_just_pressed("ui_accept") and can_shoot:
 		if out_of_energy:
@@ -125,7 +133,12 @@ func shoot():
 # Returns true so coin can be cleared in Coin script
 func add_coins(amount):
 	coins += amount
-	print("total coins: ")
-	print (coins)
-	
+	emit_signal("emerald",coins)
 	return true
+	
+func drop_bombs():
+	bomb -= 1
+	if bomb <=0:
+		out_of_bombs = true
+	emit_signal("bomb",bomb)
+	pass
