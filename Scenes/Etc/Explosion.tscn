@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Sprites/Tiles & Others/Explosion.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "explode"
+step = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0367035, 0.0666147, 0.0901877, 0.119801, 0.14979, 0.179553, 0.209721, 0.24, 0.27, 0.3, 0.33 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[node name="Explosion" type="Sprite"]
+position = Vector2( -1.30478, 0 )
+texture = ExtResource( 1 )
+hframes = 12
+frame = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/explode = SubResource( 1 )
+
