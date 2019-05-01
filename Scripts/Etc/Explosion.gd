@@ -2,6 +2,7 @@ extends Sprite
 
 onready var animation = get_node("AnimationPlayer")
 var damage = 10
+var enemy = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -10,8 +11,9 @@ var damage = 10
 func _ready():
 	animation.play("explode")
 		
-
-
+func isEnemy():
+	enemy = true
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -22,5 +24,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Area2D_body_entered(body):
-	if "Enemy" in body.name:
-		body.decreaseHealth(damage)
+	if !enemy:
+		if "Enemy" in body.name:
+			body.decreaseHealth(damage)
+		
+	if enemy:
+		if "player" in body.name:
+			body.take_damage(damage)

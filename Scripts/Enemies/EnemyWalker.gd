@@ -11,11 +11,13 @@ export var bulletSpeed = 200
 export var ledgeDetection = false
 export var removeCorpse = false
 export var shooter = false
+export var bomber = false
 
 
 const FLOOR = Vector2(0, -1)
 const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
 const COIN = preload("res://Scenes/Items/Coin.tscn")
+const EXPLOSION_SCENE = preload("res://Scenes/Etc/Explosion.tscn")
 
 var velocity = Vector2()
 var direction = Global.direction.moveRight
@@ -60,9 +62,14 @@ func _physics_process(delta):
 	if get_slide_count() > 0:
 		for i in range(get_slide_count()):
 			if "player" in get_slide_collision(i).collider.name and !isDead:
-				get_slide_collision(i).collider.take_damage(5)
+				if bomber:
+					explode()
+				if !bomber:
+					get_slide_collision(i).collider.take_damage(5)
 				break
 	#End  player damage code
+	
+
 
 func _on_Timer_timeout():
 	queue_free()
@@ -106,3 +113,10 @@ func dropCoin():
 	get_parent().add_child(coin)
 	coin.position = $Position2D.global_position
 
+func explode():
+	var explosion = EXPLOSION_SCENE.instance()
+	explosion.isEnemy()
+	get_parent().add_child(explosion)
+	self.queue_free()
+	isDead = true
+	explosion.position = self.position
