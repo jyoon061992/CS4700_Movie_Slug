@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=5]
+<<<<<<< HEAD
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
+=======
+[ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://powerUp.tscn" type="PackedScene" id=7]
+>>>>>>> c0800bc700a9aea4ea51b44b599064fdd880e25f
 
 [node name="HubWorld" type="Node2D"]
 
@@ -44,6 +49,24 @@ margin_right = 727.551
 margin_bottom = 138.522
 rect_scale = Vector2( 0.3, 0.3 )
 
+<<<<<<< HEAD
+=======
+[node name="ShopMenu" parent="." instance=ExtResource( 5 )]
+margin_left = 171.608
+margin_top = 65.2832
+margin_right = 345.608
+margin_bottom = 159.283
+
+[node name="EnemyWalker" parent="." instance=ExtResource( 6 )]
+position = Vector2( 176, 144 )
+lineOfSightDistance = 1000
+atk_range = 1000
+
+[node name="powerUp" parent="." instance=ExtResource( 7 )]
+position = Vector2( 69.2817, 106.942 )
+scale = Vector2( 0.1, 0.1 )
+
+>>>>>>> c0800bc700a9aea4ea51b44b599064fdd880e25f
 [connection signal="close_shop" from="NPC" to="ShopMenu" method="_on_NPC_close_shop"]
 [connection signal="open_shop" from="NPC" to="ShopMenu" method="_on_NPC_open_shop"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]
