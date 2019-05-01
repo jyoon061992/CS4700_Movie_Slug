@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Levels/TestingGround.gd" type="Script" id=1]
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=7]
 
 [node name="TestingGround" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,6 +23,7 @@ tile_data = PoolIntArray( 0, 11, 0, 17, 0, 0, 88, 9, 0, 65536, 11, 0, 65546, 0, 
 position = Vector2( 102.698, 64 )
 collision_layer = 2
 collision_mask = 2
+isDialogueNPC = true
 
 [node name="EnemyWalker" parent="." instance=ExtResource( 4 )]
 position = Vector2( 310.886, 91.0099 )
@@ -70,15 +72,6 @@ removeCorpse = true
 position = Vector2( 27.0763, 75.9873 )
 Camera_Constraint_Right = 1424
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
-margin_left = 0.618683
-margin_top = 1.66779
-margin_right = 644.619
-margin_bottom = 138.668
-rect_scale = Vector2( 0.2, 0.2 )
-
 [node name="EnemyWalker10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 544, 128 )
 
@@ -106,7 +99,18 @@ position = Vector2( 224, 96 )
 [node name="EnemyWalker18" parent="." instance=ExtResource( 4 )]
 position = Vector2( 64, 128 )
 
-[connection signal="bomb" from="player" to="CanvasLayer/UI" method="_on_player_bomb"]
-[connection signal="emerald" from="player" to="CanvasLayer/UI" method="_on_player_emerald"]
-[connection signal="health_changed" from="player" to="CanvasLayer/UI" method="_on_player_health_changed"]
-[connection signal="shooting" from="player" to="CanvasLayer/UI" method="_on_player_shooting"]
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="Canvas" instance=ExtResource( 6 )]
+margin_left = 0.618683
+margin_top = 1.66779
+margin_right = 644.619
+margin_bottom = 138.668
+rect_scale = Vector2( 0.2, 0.2 )
+
+[node name="Dialogue" parent="Canvas" instance=ExtResource( 7 )]
+
+[connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
+[connection signal="emerald" from="player" to="Canvas/UI" method="_on_player_emerald"]
+[connection signal="health_changed" from="player" to="Canvas/UI" method="_on_player_health_changed"]
+[connection signal="shooting" from="player" to="Canvas/UI" method="_on_player_shooting"]

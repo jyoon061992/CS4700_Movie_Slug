@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Choice" type="RichTextLabel"]
+margin_right = 100.0
+margin_bottom = 22.0
+rect_clip_content = false
+bbcode_enabled = true
+bbcode_text = "Choice Text"
+text = "Choice Text"
+scroll_active = false
+

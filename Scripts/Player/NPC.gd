@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+onready var dialogue = get_node("../Canvas/Dialogue")
+
+export var isShopKeeper = false
+export var isDialogueNPC = false
+export var dialoguePath : String = "hello_world"
+
 const GRAVITY = 10
 const SPEED = 30
 const FLOOR = Vector2(0, -1)
@@ -9,6 +15,7 @@ var direction = Global.direction.moveRight
 
 var playerOnConnect = false
 var shopOpened = false
+var talking = false
 
 signal open_shop
 signal close_shop
@@ -16,6 +23,7 @@ signal close_shop
 func _ready():
 	$NPCArea2D.connect("area_entered", self, "playerEntered")
 	$NPCArea2D.connect("area_exited", self, "playerExited")
+	
 
 func _physics_process(delta):
 	move()
@@ -42,12 +50,22 @@ func handle_collision():
 		$RayCast2D.position.x *= -1
 
 func _input(event):
-	if playerOnConnect and Input.is_action_pressed("ui_accept") and !shopOpened:
-		shopOpened = true
-		emit_signal("open_shop")
-	elif playerOnConnect and Input.is_action_pressed("ui_cancel") and shopOpened:
-		shopOpened = false
-		emit_signal("close_shop")
+	if isShopKeeper:
+		if playerOnConnect and Input.is_action_pressed("ui_accept") and !shopOpened:
+			shopOpened = true
+			emit_signal("open_shop")
+		elif playerOnConnect and Input.is_action_pressed("ui_cancel") and shopOpened:
+			shopOpened = false
+			emit_signal("close_shop")
+	elif isDialogueNPC:
+		if playerOnConnect and Input.is_action_pressed("ui_accept") and not talking:
+			print("initiate dialogue")
+			talking = true
+			dialogue.initiate(dialoguePath)
+		elif playerOnConnect and Input.is_action_pressed("ui_accept") and talking:
+			dialogue.next()
+			talking = !dialogue.isFinished()
+			
 		
 func playerEntered(object):
 	playerOnConnect = object.get_name() == "PlayerArea2D"
@@ -56,4 +74,6 @@ func playerExited(object):
 	if object.get_name() == "PlayerArea2D":
 		playerOnConnect = false
 		shopOpened = false
+		talking = false
+		dialogue.close()
 		emit_signal("close_shop")
