@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Art/Sprites/Tiles & Others/Explosion.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Etc/Explosion.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "explode"
+length = 0.35
 step = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -22,8 +24,10 @@ tracks/0/keys = {
 position = Vector2( -1.30478, 0 )
 texture = ExtResource( 1 )
 hframes = 12
-frame = 11
+script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
 anims/explode = SubResource( 1 )
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
