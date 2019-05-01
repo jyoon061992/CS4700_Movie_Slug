@@ -34,7 +34,6 @@ custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Empty text"
 text = "Empty text"
-scroll_active = false
 
 [node name="Choices" type="Control" parent="Frame"]
 

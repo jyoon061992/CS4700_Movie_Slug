@@ -75,5 +75,6 @@ func playerExited(object):
 		playerOnConnect = false
 		shopOpened = false
 		talking = false
-		dialogue.close()
+		if isDialogueNPC and dialogue != null:
+			dialogue.close()
 		emit_signal("close_shop")

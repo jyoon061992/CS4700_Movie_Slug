@@ -38,8 +38,8 @@ var choice_text_alignment : String = 'right' # Alignment of the choice's text. C
 var choice_node_alignment : String = 'right' # Alignment of the "Choice" node. Can be "left" or "right"
 var previous_command : String = 'ui_up' # Input commmand for the navigating through question choices 
 var next_command : String = 'ui_down' # Input commmand for the navigating through question choices
-var frame_height : int = 100 # Dialog frame height (in pixels)
-var frame_width : int = 200 # Dialog frame width (in pixels)
+var frame_height : int = 60 # Dialog frame height (in pixels)
+var frame_width : int = 250 # Dialog frame width (in pixels)
 var frame_position : String = 'bottom' # Use to "top" or "bottom" to change the dialogue frame vertical alignment 
 var frame_margin_vertical : int = 40 # Vertical space (in pixels) between the dialogue box and the window border
 var label_margin : int = 10 # Space (in pixels) between the dialogue frame border and the text
@@ -80,7 +80,6 @@ func set_frame(): # Mostly aligment operations.
 			self.anchor_right = 0.5
 			self.anchor_bottom = 0
 		"bottom":
-			print('bottom')
 			self.anchor_left = 0.5
 			self.anchor_top = 1
 			self.anchor_right = 0.5
@@ -90,14 +89,15 @@ func set_frame(): # Mostly aligment operations.
 	continue_indicator.anchor_top = 1
 	continue_indicator.anchor_right = 0.5
 	continue_indicator.anchor_bottom = 1
-	continue_indicator.rect_position = Vector2(-(continue_indicator.get_rect().size.x / 2) - label_margin,
+	continue_indicator.rect_position = Vector2(-(continue_indicator.get_rect().size.x / 2) - label_margin + 100,
 			frame_height - continue_indicator.get_rect().size.y - label_margin)
 	
 	frame.rect_size = Vector2(frame_width, frame_height)
-	frame.rect_position = Vector2(-frame_width/2, 0)
+	frame.rect_position = Vector2(-frame_width/2 + 100, 0)
 	
 	label.rect_size = Vector2(frame_width - (label_margin * 2), frame_height - (label_margin * 2) )
 	label.rect_position = Vector2(label_margin, label_margin)
+
 	
 	frame.hide() # Hide the dialogue frame
 	continue_indicator.hide()

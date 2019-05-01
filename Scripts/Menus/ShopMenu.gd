@@ -18,8 +18,8 @@ func _ready():
 #func _physics_process(delta):
 #	pass
 
-func _on_NPC_open_shop():
-	show()
-	
-func _on_NPC_close_shop():
+func _on_ShopKeeper_close_shop():
 	hide()
+
+func _on_ShopKeeper_open_shop():
+	show()
