@@ -8,6 +8,7 @@ const SHOT_COUNTER = 3
 const FLOOR = Vector2(0,-1)
 
 const FIREBALL = preload("res://Scenes/Player/fireball.tscn")
+const BOMB = preload("res://Scenes/Items/Bomb.tscn")
 
 export var Camera_Constraint_Right = 100000
 export var Camera_Constraint_Up = 100000
@@ -168,10 +169,14 @@ func add_coins(amount):
 	return true
 	
 func drop_bombs():
+	var dropBomb = BOMB.instance()
 	bomb -= 1
 	if bomb <=0:
 		out_of_bombs = true
 	emit_signal("bomb",bomb)
+	dropBomb.position = $Position2D.global_position
+	get_parent().add_child(dropBomb)
+	
 	pass
 	
 func inc_health(amount):
