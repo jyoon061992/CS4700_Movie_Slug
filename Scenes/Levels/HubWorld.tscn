@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=5]
+<<<<<<< HEAD
 [ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=6]
+=======
+<<<<<<< HEAD
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
+=======
+[ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://powerUp.tscn" type="PackedScene" id=7]
+>>>>>>> c0800bc700a9aea4ea51b44b599064fdd880e25f
+>>>>>>> 18866d49286b94786f48440c3775977c050ddb53
 
 [node name="HubWorld" type="Node2D"]
 
@@ -29,27 +38,52 @@ collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 
-[node name="player" parent="." instance=ExtResource( 3 )]
+[node name="Portal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 103.607, 109.423 )
+
+[node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )
 Camera_Constraint_Right = 368
 
-[node name="UI" parent="." instance=ExtResource( 4 )]
+[node name="ShopMenu" parent="." instance=ExtResource( 5 )]
+margin_left = 173.73
+margin_top = 66.0332
+margin_right = 347.73
+margin_bottom = 160.033
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
 margin_left = 2.55139
 margin_top = 1.52202
 margin_right = 727.551
 margin_bottom = 138.522
 rect_scale = Vector2( 0.3, 0.3 )
 
+<<<<<<< HEAD
+=======
 [node name="ShopMenu" parent="." instance=ExtResource( 5 )]
-margin_left = 182.551
-margin_top = 80.0
-margin_right = 356.551
-margin_bottom = 174.0
+margin_left = 171.608
+margin_top = 65.2832
+margin_right = 345.608
+margin_bottom = 159.283
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="Canvas" instance=ExtResource( 6 )]
 
+<<<<<<< HEAD
 [connection signal="close_shop" from="ShopKeeper" to="ShopMenu" method="_on_NPC_close_shop"]
 [connection signal="open_shop" from="ShopKeeper" to="ShopMenu" method="_on_NPC_open_shop"]
 [connection signal="health_changed" from="player" to="UI" method="_on_player_health_changed"]
+=======
+[node name="powerUp" parent="." instance=ExtResource( 7 )]
+position = Vector2( 69.2817, 106.942 )
+scale = Vector2( 0.1, 0.1 )
+
+>>>>>>> c0800bc700a9aea4ea51b44b599064fdd880e25f
+[connection signal="close_shop" from="NPC" to="ShopMenu" method="_on_NPC_close_shop"]
+[connection signal="open_shop" from="NPC" to="ShopMenu" method="_on_NPC_open_shop"]
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]
+[connection signal="health_changed" from="player" to="CanvasLayer/UI" method="_on_player_health_changed"]
+>>>>>>> 18866d49286b94786f48440c3775977c050ddb53
