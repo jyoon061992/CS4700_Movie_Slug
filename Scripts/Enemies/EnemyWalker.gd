@@ -5,10 +5,13 @@ export var speed = 30
 export var health = 3
 export var shotDelay = 1
 export var lineOfSightDistance = 60
+export var atk_range = 150
+export var atkDamage = 1
+export var bulletSpeed = 200
 export var ledgeDetection = false
 export var removeCorpse = false
 export var shooter = false
-export var atk_range = 150
+
 
 const FLOOR = Vector2(0, -1)
 const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
@@ -57,7 +60,7 @@ func _physics_process(delta):
 	if get_slide_count() > 0:
 		for i in range(get_slide_count()):
 			if "player" in get_slide_collision(i).collider.name and !isDead:
-				get_slide_collision(i).collider.take_damage(1)
+				get_slide_collision(i).collider.take_damage(5)
 				break
 	#End  player damage code
 
@@ -88,6 +91,8 @@ func shoot():
 	var bullet = BULLET.instance()
 	bullet.setInitialPosition(position.x)
 	bullet.setAtkRange(atk_range)
+	bullet.setBulletSpeed(bulletSpeed)
+	bullet.setBulletDamage(atkDamage)
 	if sign($Position2D.position.x) == Global.direction.moveRight:
 		bullet.setBulletDirection(Global.direction.moveRight)
 	else:
