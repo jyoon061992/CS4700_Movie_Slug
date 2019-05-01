@@ -1,8 +1,7 @@
 extends Area2D
 
-export var SPEED = 200
-export var damage = 1
-
+var SPEED = 200
+var damage = 1
 var velocity = Vector2()
 var direction = Global.direction.moveRight
 var x_pos = 0
@@ -21,6 +20,12 @@ func setBulletDirection(dir):
 	direction = dir
 	if dir == Global.direction.moveLeft:
 		$AnimatedSprite.flip_h = true
+		
+func setBulletSpeed(speed):
+	SPEED = speed
+	
+func setBulletDamage(dam):
+	damage = dam
 	
 func _physics_process(delta):
 	velocity.x = SPEED * delta * direction
