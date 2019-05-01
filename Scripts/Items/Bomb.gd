@@ -20,4 +20,3 @@ func explode():
 	get_parent().add_child(explosion)
 	self.queue_free()
 	explosion.position = self.position
-	explosion
