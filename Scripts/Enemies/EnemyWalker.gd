@@ -65,7 +65,7 @@ func _physics_process(delta):
 				if bomber:
 					explode()
 				if !bomber:
-					get_slide_collision(i).collider.take_damage(5)
+					get_slide_collision(i).collider.take_damage(1)
 				break
 	#End  player damage code
 	
