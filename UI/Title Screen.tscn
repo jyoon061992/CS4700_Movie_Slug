@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/movie-theater-cloth-curtains-open_v1nh4alzz__F0003.png" type="Texture" id=1]
+
+[node name="Title Screen" type="Node"]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.282212, 0.3 )
+texture = ExtResource( 1 )
+centered = false
+

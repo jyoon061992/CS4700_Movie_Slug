@@ -3,16 +3,21 @@ extends KinematicBody2D
 const SPEED = 60
 const GRAVITY = 10
 const JUMP_POWER = -250
+const JUMP_COUNTER = 1
+const SHOT_COUNTER = 3
 const FLOOR = Vector2(0,-1)
 
 const FIREBALL = preload("res://Scenes/Player/fireball.tscn")
-export var Camera_Constraint_Right = 100000
 
+export var Camera_Constraint_Right = 100000
+export var Camera_Constraint_Up = 100000
 
 var velocity = Vector2()
 var on_ground = false
 var out_of_energy = false
 var out_of_bombs = false
+
+var jump_count = 0
 
 export var max_health = 100
 export var max_energy = 100
@@ -36,6 +41,8 @@ signal bomb
 
 func _ready():
 	get_node("Camera2D").limit_right = Camera_Constraint_Right
+	pass
+
 
 
 func _physics_process(delta):
@@ -59,12 +66,17 @@ func _physics_process(delta):
 		$AnimatedSprite.play("idle")
 		
 	if Input.is_action_just_pressed("ui_up"):
-		if on_ground == true:
-			$AnimatedSprite.play("jump")
-			velocity.y = JUMP_POWER
+#		if on_ground == true:
+#			$AnimatedSprite.play("jump")
+#			velocity.y = JUMP_POWER
+#			on_ground = false
+		if jump_count < JUMP_COUNTER:
+			jump_count+=1
+			velocity.y=JUMP_POWER
 			on_ground = false
 	
-	if Input.is_action_pressed("ui_down"):
+	
+	if Input.is_action_just_pressed("ui_down"):
 		reload()
 		
 	if Input.is_action_just_pressed("ui_home"):
@@ -72,24 +84,28 @@ func _physics_process(delta):
 			return
 		drop_bombs()
 
-	if Input.is_action_just_pressed("ui_accept") and can_shoot:
+	if Input.is_action_just_pressed("ui_accept"):
 		if out_of_energy:
 			return
-		var fireball = FIREBALL.instance()
-		if sign($Position2D.position.x) == 1:
-			fireball.set_fireball_direction(1)
-		else:
-			fireball.set_fireball_direction(-1)
-		get_parent().add_child(fireball)
-		fireball.position = $Position2D.global_position
+		for i in SHOT_COUNTER:
+			var fireball = FIREBALL.instance()
+			if sign($Position2D.position.x) == 1:
+				fireball.set_fireball_direction(1)
+			else:
+				fireball.set_fireball_direction(-1)
+			get_parent().add_child(fireball)
+			fireball.position = $Position2D.global_position
+			yield(get_tree().create_timer(.1), "timeout")
 		shoot()
 		
 	velocity.y += GRAVITY
 	
 	if is_on_floor():
 		on_ground = true
+		jump_count=0
 	else:
 		on_ground = false
+		
 	velocity = move_and_slide(velocity,FLOOR)
 	
 	if get_slide_count() > 0:
@@ -119,14 +135,17 @@ func dead():
 func reload():
 	if shot < 100:
 		shot+=10
-	if shot >0:
+	if shot >= 10*SHOT_COUNTER:
 		out_of_energy = false
 	emit_signal("shooting",shot)
 	
 func shoot():
-	shot -= 10
-	if shot <=0:
+	if shot < 10*SHOT_COUNTER:
 		out_of_energy = true
+	else:
+		shot -= 10*SHOT_COUNTER
+		if shot < 10*SHOT_COUNTER:
+			out_of_energy = true
 	emit_signal("shooting",shot)
 	pass
 	
