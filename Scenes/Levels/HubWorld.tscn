@@ -44,7 +44,7 @@ can_shoot = false
 [node name="Dialogue" parent="Canvas" instance=ExtResource( 5 )]
 
 [node name="UI" parent="Canvas" instance=ExtResource( 6 )]
-margin_left = 2.59876e-005
+margin_left = 2.59876e-05
 margin_top = 0.735116
 margin_right = 644.0
 margin_bottom = 137.735
