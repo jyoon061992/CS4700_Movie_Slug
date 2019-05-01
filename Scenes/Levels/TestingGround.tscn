@@ -176,7 +176,7 @@ removeCorpse = true
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 27.0763, 75.9873 )
-Camera_Constraint_Right = 1424
+Camera_Constraint_Right = 3200
 
 [node name="EnemyWalker10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 544, 128 )
