@@ -51,18 +51,18 @@ func handle_collision():
 
 func _input(event):
 	if isShopKeeper:
-		if playerOnConnect and Input.is_action_pressed("ui_accept") and !shopOpened:
+		if playerOnConnect and Input.is_action_just_pressed("ui_accept") and !shopOpened:
 			shopOpened = true
 			emit_signal("open_shop")
 		elif playerOnConnect and Input.is_action_pressed("ui_cancel") and shopOpened:
 			shopOpened = false
 			emit_signal("close_shop")
 	elif isDialogueNPC:
-		if playerOnConnect and Input.is_action_pressed("ui_accept") and not talking:
+		if playerOnConnect and Input.is_action_just_pressed("ui_accept") and not talking:
 			print("initiate dialogue")
 			talking = true
 			dialogue.initiate(dialoguePath)
-		elif playerOnConnect and Input.is_action_pressed("ui_accept") and talking:
+		elif playerOnConnect and Input.is_action_just_pressed("ui_accept") and talking:
 			dialogue.next()
 			talking = !dialogue.isFinished()
 			
