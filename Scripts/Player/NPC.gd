@@ -61,6 +61,7 @@ func _input(event):
 		if playerOnConnect and Input.is_action_just_pressed("ui_accept") and not talking:
 			print("initiate dialogue")
 			talking = true
+			dialogue.setDialogueEnabled(true)
 			dialogue.initiate(dialoguePath)
 		elif playerOnConnect and Input.is_action_just_pressed("ui_accept") and talking:
 			dialogue.next()
@@ -76,5 +77,6 @@ func playerExited(object):
 		shopOpened = false
 		talking = false
 		if isDialogueNPC and dialogue != null:
+			dialogue.setDialogueEnabled(false)
 			dialogue.close()
 		emit_signal("close_shop")

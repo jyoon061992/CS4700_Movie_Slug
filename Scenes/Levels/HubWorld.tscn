@@ -4,9 +4,9 @@
 [ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://powerUp.tscn" type="PackedScene" id=8]
 
 [node name="HubWorld" type="Node2D"]
@@ -37,27 +37,30 @@ position = Vector2( 95.521, 65.3174 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )
 Camera_Constraint_Right = 368
-
-[node name="ShopMenu" parent="." instance=ExtResource( 5 )]
-margin_left = 171.608
-margin_top = 65.2832
-margin_right = 345.608
-margin_bottom = 159.283
+can_shoot = false
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="Dialogue" parent="Canvas" instance=ExtResource( 6 )]
+[node name="Dialogue" parent="Canvas" instance=ExtResource( 5 )]
 
-[node name="UI" parent="Canvas" instance=ExtResource( 7 )]
+[node name="UI" parent="Canvas" instance=ExtResource( 6 )]
 margin_left = 2.59876e-005
 margin_top = 0.735116
 margin_right = 644.0
 margin_bottom = 137.735
 
+[node name="ShopMenu" parent="Canvas" instance=ExtResource( 7 )]
+margin_left = 171.608
+margin_top = 65.2832
+margin_right = 345.608
+margin_bottom = 159.283
+
 [node name="powerUp" parent="." instance=ExtResource( 8 )]
 position = Vector2( 69.2817, 106.942 )
 scale = Vector2( 0.1, 0.1 )
 
+[connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
+[connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]
 [connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
 [connection signal="died" from="player" to="Canvas/UI" method="_on_player_died"]

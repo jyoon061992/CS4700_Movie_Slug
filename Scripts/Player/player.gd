@@ -97,7 +97,7 @@ func _physics_process(delta):
 			return
 		drop_bombs()
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and can_shoot:
 		if out_of_energy:
 			return
 		for i in SHOT_COUNTER:

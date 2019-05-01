@@ -45,6 +45,7 @@ var frame_margin_vertical : int = 40 # Vertical space (in pixels) between the di
 var label_margin : int = 10 # Space (in pixels) between the dialogue frame border and the text
 var enable_continue_indicator : bool = true # Enable or disable the "continue_indicator" animation when the text is completely displayed. If typewritter effect is disabled it will always be visible on every dialogue block.
 var finished : bool = false
+var dialogue_enabled : bool = false
 # END OF SETUP #
 
 
@@ -71,6 +72,8 @@ func _ready():
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 	set_frame()
 
+func setDialogueEnabled(enabled):
+	dialogue_enabled = enabled
 
 func set_frame(): # Mostly aligment operations.
 	match frame_position:
@@ -236,7 +239,7 @@ func update_dialogue(step): # step == whole dialogue block
 	if wait_time > 0: # Check if the typewriter effect is active and then starts the timer.
 		label.visible_characters = 0
 		timer.start()
-	elif enable_continue_indicator: # If typewriter effect is disabled check if the ContinueIndicator should be displayed
+	elif enable_continue_indicator and dialogue_enabled: # If typewriter effect is disabled check if the ContinueIndicator should be displayed
 		continue_indicator.show()
 
 
@@ -427,7 +430,7 @@ func _on_Timer_timeout():
 	else:
 		if is_question:
 			choices.get_child(0).self_modulate = active_choice
-		elif enable_continue_indicator:
+		elif enable_continue_indicator and dialogue_enabled:
 			continue_indicator.show()
 		timer.stop()
 		return
