@@ -59,7 +59,6 @@ func _input(event):
 			emit_signal("close_shop")
 	elif isDialogueNPC:
 		if playerOnConnect and Input.is_action_just_pressed("ui_accept") and not talking:
-			print("initiate dialogue")
 			talking = true
 			dialogue.setDialogueEnabled(true)
 			dialogue.initiate(dialoguePath)
@@ -69,7 +68,7 @@ func _input(event):
 			
 		
 func playerEntered(object):
-	playerOnConnect = object.get_name() == "PlayerArea2D"
+	playerOnConnect = playerOnConnect or object.get_name() == "PlayerArea2D"
 	
 func playerExited(object):
 	if object.get_name() == "PlayerArea2D":

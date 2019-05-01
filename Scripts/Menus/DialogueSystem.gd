@@ -113,7 +113,6 @@ func initiate(file_id): # Load the whole dialogue into a variable
 	var json = file.get_as_text()
 	dialogue = JSON.parse(json).result
 	file.close()
-	print("hello world")
 	first() # Call the first dialogue block
 
 
