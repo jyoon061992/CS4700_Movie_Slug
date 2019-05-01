@@ -173,3 +173,8 @@ func drop_bombs():
 		out_of_bombs = true
 	emit_signal("bomb",bomb)
 	pass
+	
+func inc_health(amount):
+	if health < 100:
+		health += amount
+		
