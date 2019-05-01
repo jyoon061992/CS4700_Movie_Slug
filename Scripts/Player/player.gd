@@ -49,6 +49,18 @@ func _physics_process(delta):
 	if dead == true:
 		return
 	
+	if Input.is_action_pressed("ui_page_down"):
+		get_tree().change_scene("res://Scenes/Levels/HubWorld.tscn")
+		pass
+	
+	if Input.is_action_pressed("ui_page_up"):
+		get_tree().change_scene("res://Scenes/Levels/TestingGround.tscn")
+		pass
+	
+	if Input.is_action_pressed("ui_end"):
+		get_tree().change_scene("res://UI/Title Screen.tscn")
+		pass
+
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
 		$AnimatedSprite.flip_h = false
