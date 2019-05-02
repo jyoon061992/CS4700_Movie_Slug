@@ -4,7 +4,7 @@ const SPEED = 60
 const GRAVITY = 10
 const JUMP_POWER = -250
 const JUMP_COUNTER = 1
-const SHOT_COUNTER = 3
+const SHOT_COUNTER = 1
 const FLOOR = Vector2(0,-1)
 
 const FIREBALL = preload("res://Scenes/Player/fireball.tscn")
@@ -29,6 +29,8 @@ export var god_mode = false;
 var coins = starting_coins
 var health = max_health
 var shot = max_energy
+var shot_cost = 5
+var reload_amount = 2
 var dead = false
 var bomb = 3
 
@@ -92,7 +94,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("ui_down"):
-		reload()
+		reload(reload_amount)
 		
 	if Input.is_action_just_pressed("ui_home"):
 		if out_of_bombs:
@@ -142,26 +144,25 @@ func take_damage(count):
 		health = 0
 		state = STATES.DEAD
 		emit_signal("died")
-
 	emit_signal("health_changed", health)
 	
 func dead():
 	dead = true
 	$AnimatedSprite.flip_v = true
 
-func reload():
+func reload(amount):
 	if shot < 100:
-		shot+=10
-	if shot >= 10*SHOT_COUNTER:
+		shot+=amount
+	if shot >= shot_cost*SHOT_COUNTER:
 		out_of_energy = false
 	emit_signal("shooting",shot)
 	
 func shoot():
-	if shot < 10*SHOT_COUNTER:
+	if shot < shot_cost*SHOT_COUNTER:
 		out_of_energy = true
 	else:
-		shot -= 10*SHOT_COUNTER
-		if shot < 10*SHOT_COUNTER:
+		shot -= shot_cost*SHOT_COUNTER
+		if shot < shot_cost*SHOT_COUNTER:
 			out_of_energy = true
 	emit_signal("shooting",shot)
 	pass

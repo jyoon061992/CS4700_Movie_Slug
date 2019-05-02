@@ -18,6 +18,7 @@ const FLOOR = Vector2(0, -1)
 const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
 const COIN = preload("res://Scenes/Items/Coin.tscn")
 const EXPLOSION_SCENE = preload("res://Scenes/Etc/Explosion.tscn")
+const SUPPLIES = preload("res://Scenes/Items/supplies.tscn")
 
 var velocity = Vector2()
 var direction = Global.direction.moveRight
@@ -35,6 +36,9 @@ func dead():
 	$AnimatedSprite.play("dead")
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	dropCoin()
+	var rand = randi()%3+1
+	if rand == 3:
+		dropSupplies()
 	
 	if removeCorpse:
 		$Timer.start()
@@ -112,6 +116,11 @@ func dropCoin():
 	var coin = COIN.instance()
 	get_parent().add_child(coin)
 	coin.position = $Position2D.global_position
+
+func dropSupplies():
+	var supply = SUPPLIES.instance()
+	get_parent().add_child(supply)
+	supply.position = $Position2D.global_position
 
 func explode():
 	var explosion = EXPLOSION_SCENE.instance()

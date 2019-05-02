@@ -218,6 +218,8 @@ margin_left = 0.324097
 margin_top = 6.75623
 margin_right = 644.324
 margin_bottom = 143.756
+rect_min_size = Vector2( 0.2, 0.2 )
+rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Dialogue" parent="Canvas" instance=ExtResource( 8 )]
 
