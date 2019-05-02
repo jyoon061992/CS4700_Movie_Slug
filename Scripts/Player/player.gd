@@ -24,6 +24,8 @@ export var max_health = 100
 export var max_energy = 100
 export var starting_coins = 0
 export var can_shoot = true
+export var god_mode = false;
+
 var coins = starting_coins
 var health = max_health
 var shot = max_energy
@@ -132,6 +134,8 @@ func _physics_process(delta):
 func take_damage(count):
 	if state == STATES.DEAD:
 		dead()
+		return
+	if god_mode:
 		return
 	health -= count
 	if health <= 0:
