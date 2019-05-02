@@ -10,7 +10,7 @@ export var atkDamage = 1
 export var bulletSpeed = 200
 export var ledgeDetection = true
 export var removeCorpse = true
-export var shooter = false
+export var shooter = true
 export var bomber = false
 
 
@@ -98,6 +98,7 @@ func move():
 	
 func decreaseHealth(amount):
 	health -= amount;
+	
 	if health <= 0:
 		dead()
 		
@@ -138,4 +139,3 @@ func explode():
 	self.queue_free()
 	isDead = true
 	explosion.position = self.position
-

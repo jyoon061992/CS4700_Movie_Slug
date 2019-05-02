@@ -68,14 +68,14 @@ func _physics_process(delta):
 	
 	
 	#This was Added so ememy running into player would cause damage
-	if get_slide_count() > 0:
-		for i in range(get_slide_count()):
-			if "player" in get_slide_collision(i).collider.name and !isDead:
-				if bomber:
-					explode()
-				#if !bomber:
-				#	get_slide_collision(i).collider.take_damage(1)
-				break
+	#if get_slide_count() > 0:
+	#	for i in range(get_slide_count()):
+	#		if "player" in get_slide_collision(i).collider.name and !isDead:
+	#			if bomber:
+	#				explode()
+	#			if !bomber:
+	#				get_slide_collision(i).collider.take_damage(1)
+	#			break
 	#End  player damage code
 	
 
@@ -98,6 +98,7 @@ func move():
 	
 func decreaseHealth(amount):
 	health -= amount;
+	
 	if health <= 0:
 		dead()
 		
@@ -139,3 +140,8 @@ func explode():
 	isDead = true
 	explosion.position = self.position
 
+
+func _on_Area2D_body_entered(body):
+	if "player" in body.name:
+		explode()
+	pass 

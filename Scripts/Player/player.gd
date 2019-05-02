@@ -74,6 +74,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if sprint:
 			velocity.x = SPEED*2
+			run()
 		else:
 			velocity.x = SPEED
 		$AnimatedSprite.flip_h = false
@@ -83,6 +84,7 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_left"):
 		if sprint:
 			velocity.x = -SPEED*2
+			run()
 		else:
 			velocity.x = -SPEED
 		$AnimatedSprite.flip_h = true
@@ -170,6 +172,13 @@ func shoot():
 	emit_signal("shooting",shot)
 	pass
 	
+func run():
+	shot -= .1
+	emit_signal("shooting",shot)
+	pass
+	
+	
+	
 # Returns true so coin can be cleared in Coin script
 func add_coins(amount):
 	coins += amount
@@ -184,7 +193,6 @@ func drop_bombs():
 	emit_signal("bomb",bomb)
 	dropBomb.position = $Position2D.global_position
 	get_parent().add_child(dropBomb)
-	
 	pass
 	
 func inc_health(amount):
@@ -194,6 +202,8 @@ func inc_health(amount):
 		
 
 func _on_Area2D_body_entered(body):
-	if "EnemyWalker" in body.name:
+	if "shooter" in body.name or "walker" in body.name:
 		take_damage(10)
+	if "bomber" in body.name:
+		take_damage(40)
 	pass

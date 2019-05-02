@@ -71,7 +71,6 @@ func _on_player_health_changed(player_health):
 	update_health(player_health)
 	pass
 
-
 func _on_player_shooting(player_energy):
 	update_energy(player_energy)
 	pass 
@@ -83,3 +82,7 @@ func _on_player_emerald(player_emeralds):
 func _on_player_bomb(bomb):
 	update_bombs(bomb)
 	pass 
+
+
+func _on_player_died():
+	pass # Replace with function body.

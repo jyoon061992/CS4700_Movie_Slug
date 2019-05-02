@@ -23,10 +23,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	pass 
 
-
 func _on_fireball_body_entered(body):
-	if "Enemy" in body.name:
+	if "bomber" in body.name or "shooter" in body.name or "walker" in body.name:
 		body.decreaseHealth(damage)
-		
 	queue_free()
 	pass
