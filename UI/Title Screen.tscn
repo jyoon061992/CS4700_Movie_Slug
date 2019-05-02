@@ -1,18 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Art/movie-theater-cloth-curtains-open_v1nh4alzz__F0003.png" type="Texture" id=2]
 [ext_resource path="res://Art/font/Montserrat-Medium.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.380392, 0.0235294, 0.0235294, 1 )
 corner_detail = 9
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 56
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 10
 font_data = ExtResource( 3 )
 
@@ -41,41 +45,42 @@ margin_bottom = 112.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
 margin_right = 386.0
-margin_bottom = 64.0
+margin_bottom = 70.0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-margin_right = 386.0
-margin_bottom = 64.0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+margin_right = 365.0
+margin_bottom = 70.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "MOVIE SLUG"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
-margin_top = 68.0
+margin_top = 74.0
 margin_right = 386.0
-margin_bottom = 88.0
+margin_bottom = 93.0
 custom_constants/separation = 30
 
 [node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
 margin_right = 70.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 3 )
 text = "Start Game"
 
 [node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
 margin_left = 100.0
-margin_right = 165.0
-margin_bottom = 20.0
+margin_right = 154.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 4 )
 text = "Controls"
 
 [node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
-margin_left = 195.0
-margin_right = 243.0
-margin_bottom = 20.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 184.0
+margin_right = 232.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 3 )
 text = "Credits"
 
 [connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
