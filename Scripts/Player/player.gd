@@ -30,7 +30,7 @@ var coins = starting_coins
 var health = max_health
 var shot = max_energy
 var shot_cost = 5
-var reload_amount = 2
+var reload_amount = 3
 var dead = false
 var bomb = 3
 var sprint = false
@@ -173,8 +173,11 @@ func shoot():
 	pass
 	
 func run():
-	shot -= .1
-	emit_signal("shooting",shot)
+	if shot < shot_cost*SHOT_COUNTER:
+		out_of_energy = true
+	else:
+		shot -= .1
+		emit_signal("shooting",shot)
 	pass
 	
 	
