@@ -128,17 +128,8 @@ position = Vector2( 2738.29, -170.418 )
 [node name="EnemyWalker54" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2975.29, -178.418 )
 
-[node name="EnemyWalker" parent="." instance=ExtResource( 3 )]
-position = Vector2( 310.886, 91.0099 )
-ledgeDetection = true
-removeCorpse = true
-
 [node name="EnemyWalker2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 453.71, 131.923 )
-removeCorpse = true
-
-[node name="EnemyWalker3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 105.036, 130.785 )
 removeCorpse = true
 
 [node name="EnemyWalker4" parent="." instance=ExtResource( 3 )]
@@ -178,26 +169,11 @@ Camera_Constraint_Right = 3200
 [node name="EnemyWalker10" parent="." instance=ExtResource( 3 )]
 position = Vector2( 544, 128 )
 
-[node name="EnemyWalker11" parent="." instance=ExtResource( 3 )]
-position = Vector2( 384, 128 )
-
 [node name="EnemyWalker12" parent="." instance=ExtResource( 3 )]
 position = Vector2( 352, 128 )
 
-[node name="EnemyWalker13" parent="." instance=ExtResource( 3 )]
-position = Vector2( 432, 112 )
-
-[node name="EnemyWalker14" parent="." instance=ExtResource( 3 )]
-position = Vector2( 480, 128 )
-
-[node name="EnemyWalker15" parent="." instance=ExtResource( 3 )]
-position = Vector2( 608, 96 )
-
-[node name="EnemyWalker16" parent="." instance=ExtResource( 3 )]
-position = Vector2( 176, 112 )
-
 [node name="EnemyWalker17" parent="." instance=ExtResource( 3 )]
-position = Vector2( 224, 96 )
+position = Vector2( 259.37, 124.568 )
 
 [node name="EnemyWalker18" parent="." instance=ExtResource( 3 )]
 position = Vector2( 64, 128 )
@@ -209,7 +185,7 @@ collision_mask = 2
 isDialogueNPC = true
 
 [node name="PortalHome" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2558.74, -183.083 )
+position = Vector2( 2550.15, -164.667 )
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 

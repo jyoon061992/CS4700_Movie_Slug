@@ -33,6 +33,7 @@ var shot_cost = 5
 var reload_amount = 2
 var dead = false
 var bomb = 3
+var sprint = false
 
 # When the character dies, we fade the UI
 enum STATES {ALIVE, DEAD}
@@ -48,32 +49,42 @@ func _ready():
 	get_node("Camera2D").limit_right = Camera_Constraint_Right
 	pass
 
-
-
 func _physics_process(delta):
 	if dead == true:
 		return
 	
-	if Input.is_action_pressed("ui_page_down"):
-		get_tree().change_scene("res://Scenes/Levels/HubWorld.tscn")
+	# S Button
+	if Input.is_action_just_pressed("ui_page_down"):
+		if out_of_bombs:
+			return
+		drop_bombs()
 		pass
 	
+	# A Button
 	if Input.is_action_pressed("ui_page_up"):
-		get_tree().change_scene("res://Scenes/Levels/TestingGround.tscn")
-		pass
+		sprint = true
+	else:
+		sprint = false
 	
-	if Input.is_action_pressed("ui_end"):
-		get_tree().change_scene("res://UI/Title Screen.tscn")
+	# D Button
+	if Input.is_action_just_pressed("ui_home"):
+		reload(reload_amount)
 		pass
 
 	if Input.is_action_pressed("ui_right"):
-		velocity.x = SPEED
+		if sprint:
+			velocity.x = SPEED*2
+		else:
+			velocity.x = SPEED
 		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.play("walk")
 		if sign($Position2D.position.x) == -1:
 			$Position2D.position *= -1
 	elif Input.is_action_pressed("ui_left"):
-		velocity.x = -SPEED
+		if sprint:
+			velocity.x = -SPEED*2
+		else:
+			velocity.x = -SPEED
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.play("walk")
 		if sign($Position2D.position.x) == 1:
@@ -91,15 +102,7 @@ func _physics_process(delta):
 			jump_count+=1
 			velocity.y=JUMP_POWER
 			on_ground = false
-	
-	
-	if Input.is_action_just_pressed("ui_down"):
-		reload(reload_amount)
 		
-	if Input.is_action_just_pressed("ui_home"):
-		if out_of_bombs:
-			return
-		drop_bombs()
 
 	if Input.is_action_just_pressed("ui_accept") and can_shoot:
 		if out_of_energy:
@@ -128,7 +131,7 @@ func _physics_process(delta):
 	if get_slide_count() > 0:
 		for i in range(get_slide_count()):
 			if "EnemyWalker" in get_slide_collision(i).collider.name:
-				take_damage(1)
+				#take_damage(1)
 				break
 	pass
 
@@ -187,4 +190,10 @@ func drop_bombs():
 func inc_health(amount):
 	if health < 100:
 		health += amount
+		emit_signal("health_changed", health)
 		
+
+func _on_Area2D_body_entered(body):
+	if "EnemyWalker" in body.name:
+		take_damage(10)
+	pass

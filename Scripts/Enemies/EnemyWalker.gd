@@ -19,6 +19,7 @@ const BULLET = preload("res://Scenes/Enemies/EnemyBullet.tscn")
 const COIN = preload("res://Scenes/Items/Coin.tscn")
 const EXPLOSION_SCENE = preload("res://Scenes/Etc/Explosion.tscn")
 const SUPPLIES = preload("res://Scenes/Items/supplies.tscn")
+const HEALTH = preload("res://Scenes/Items/healthUp.tscn")
 
 var velocity = Vector2()
 var direction = Global.direction.moveRight
@@ -36,9 +37,13 @@ func dead():
 	$AnimatedSprite.play("dead")
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	dropCoin()
-	var rand = randi()%3+1
+	var rand = randi()%4+1
 	if rand == 3:
 		dropSupplies()
+		
+	rand = randi()%11+1
+	if rand == 3:
+		dropHealth()
 	
 	if removeCorpse:
 		$Timer.start()
@@ -68,8 +73,8 @@ func _physics_process(delta):
 			if "player" in get_slide_collision(i).collider.name and !isDead:
 				if bomber:
 					explode()
-				if !bomber:
-					get_slide_collision(i).collider.take_damage(1)
+				#if !bomber:
+				#	get_slide_collision(i).collider.take_damage(1)
 				break
 	#End  player damage code
 	
@@ -121,6 +126,11 @@ func dropSupplies():
 	var supply = SUPPLIES.instance()
 	get_parent().add_child(supply)
 	supply.position = $Position2D.global_position
+
+func dropHealth():
+	var health = HEALTH.instance()
+	get_parent().add_child(health)
+	health.position = $Position2D.global_position
 
 func explode():
 	var explosion = EXPLOSION_SCENE.instance()

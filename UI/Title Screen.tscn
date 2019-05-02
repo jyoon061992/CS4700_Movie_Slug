@@ -2,53 +2,82 @@
 
 [ext_resource path="res://UI/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Art/movie-theater-cloth-curtains-open_v1nh4alzz__F0003.png" type="Texture" id=2]
-[ext_resource path="res://Art/cooltext322797387254678.png" type="Texture" id=3]
-[ext_resource path="res://Art/font/Montserrat-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Art/font/Montserrat-Medium.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.380392, 0.0235294, 0.0235294, 1 )
+corner_detail = 9
+
+[sub_resource type="DynamicFont" id=4]
+size = 56
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [node name="Title Screen" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 0.630249 )
 scale = Vector2( 0.282212, 0.3 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 372.0
+margin_right = 386.0
 margin_bottom = 180.0
 rect_scale = Vector2( 0.87, 1 )
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_right = 409.0
-margin_bottom = 142.0
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 361.0
+margin_bottom = 180.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
-margin_right = 409.0
-margin_bottom = 94.0
-texture = ExtResource( 3 )
-stretch_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+margin_right = 386.0
+margin_bottom = 112.0
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_top = 98.0
-margin_right = 409.0
-margin_bottom = 117.0
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_right = 386.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
+margin_right = 386.0
+margin_bottom = 64.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+text = "MOVIE SLUG"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 68.0
+margin_right = 386.0
+margin_bottom = 88.0
+custom_constants/separation = 30
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
+margin_right = 70.0
+margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
 text = "Start Game"
 
-[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/VBoxContainer"]
-margin_top = 121.0
-margin_right = 409.0
-margin_bottom = 142.0
-custom_fonts/font = SubResource( 2 )
+[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
+margin_left = 100.0
+margin_right = 165.0
+margin_bottom = 20.0
+text = "Controls"
+
+[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
+margin_left = 195.0
+margin_right = 243.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
 text = "Credits"
 
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/LinkButton2" to="." method="_on_LinkButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer2/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer2/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer2/Button3" to="." method="_on_Button3_pressed"]

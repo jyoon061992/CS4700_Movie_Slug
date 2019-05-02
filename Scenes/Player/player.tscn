@@ -6,12 +6,12 @@
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_30.png" type="Texture" id=4]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_31.png" type="Texture" id=5]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_32.png" type="Texture" id=6]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_36.png" type="Texture" id=7]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_37.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_38.png" type="Texture" id=9]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_39.png" type="Texture" id=10]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_40.png" type="Texture" id=11]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_33.png" type="Texture" id=12]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_33.png" type="Texture" id=7]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_36.png" type="Texture" id=8]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_37.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_38.png" type="Texture" id=10]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_39.png" type="Texture" id=11]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_40.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,22 +20,22 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.72942, 10.6999 )
+extents = Vector2( 7.48066, 11.073 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 7.48066, 11.073 )
+extents = Vector2( 10, 12.3439 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 34.4707, 150.5 )
@@ -46,11 +46,6 @@ position = Vector2( 5.5293, 249.5 )
 frames = SubResource( 1 )
 animation = "walk"
 offset = Vector2( -6.49265, -254.594 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.751038, -0.250338 )
-shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 18.0248, -0.500689 )
@@ -66,9 +61,15 @@ limit_bottom = 100000
 smoothing_enabled = true
 smoothing_speed = 10.0
 
-[node name="PlayerArea2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, -0.5 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1.16227, -0.387421 )
 shape = SubResource( 3 )
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
