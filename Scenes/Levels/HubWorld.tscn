@@ -50,14 +50,15 @@ margin_bottom = 137.735
 rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="ShopMenu" parent="Canvas" instance=ExtResource( 7 )]
-margin_left = 181.361
-margin_top = 78.1167
-margin_right = 355.361
-margin_bottom = 172.117
+margin_left = 192.0
+margin_top = 90.1965
+margin_right = 366.0
+margin_bottom = 184.197
 
 [connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
 [connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]
 [connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]
+[connection signal="body_exited" from="Portal" to="Portal" method="_on_Portal_body_exited"]
 [connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
 [connection signal="died" from="player" to="Canvas/UI" method="_on_player_died"]
 [connection signal="emerald" from="player" to="Canvas/UI" method="_on_player_emerald"]
