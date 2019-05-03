@@ -16,11 +16,11 @@ var animated_emerald = 0
 var animated_bombs = 0
 
 func _ready():
-	var player_max_health = 100
-	var player_max_energy = 100
-	var player_emeralds = 0
-	var player_bombs = 3
-	bar.max_value = player_max_health
+	var player_max_health = Global.health
+	var player_max_energy = Global.energy
+	var player_emeralds = Global.emeralds
+	var player_bombs = Global.bombs
+	bar.max_value = 100
 	update_health(player_max_health)
 	update_energy(player_max_energy)
 	update_emerald(player_emeralds)

@@ -80,7 +80,7 @@ position = Vector2( 2360.41, 299.355 )
 script = ExtResource( 6 )
 
 [node name="PortalHome" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3500.95, 97.102 )
+position = Vector2( 605.735, 528.742 )
 
 [node name="shooter9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2682.2, 298.062 )
@@ -171,3 +171,5 @@ shooter = false
 [connection signal="emerald" from="player" to="CanvasLayer/UI" method="_on_player_emerald"]
 [connection signal="health_changed" from="player" to="CanvasLayer/UI" method="_on_player_health_changed"]
 [connection signal="shooting" from="player" to="CanvasLayer/UI" method="_on_player_shooting"]
+[connection signal="body_entered" from="PortalHome" to="PortalHome" method="_on_PortalHome_body_entered"]
+[connection signal="body_exited" from="PortalHome" to="PortalHome" method="_on_PortalHome_body_exited"]

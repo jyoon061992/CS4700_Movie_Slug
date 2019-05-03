@@ -26,13 +26,13 @@ export var starting_coins = 0
 export var can_shoot = true
 export var god_mode = false;
 
-var coins = starting_coins
-var health = max_health
-var shot = max_energy
+var coins = Global.emeralds
+var health = Global.health 
+var shot = Global.energy
 var shot_cost = 5
 var reload_amount = 3
 var dead = false
-var bomb = 3
+var bomb = Global.bombs
 var sprint = false
 
 # When the character dies, we fade the UI
@@ -62,6 +62,8 @@ func _physics_process(delta):
 	
 	# A Button
 	if Input.is_action_pressed("ui_page_up"):
+		if out_of_energy:
+			return
 		sprint = true
 	else:
 		sprint = false
@@ -149,6 +151,7 @@ func take_damage(count):
 		health = 0
 		state = STATES.DEAD
 		emit_signal("died")
+	Global.health = health
 	emit_signal("health_changed", health)
 	
 func dead():
@@ -160,6 +163,7 @@ func reload(amount):
 		shot+=amount
 	if shot >= shot_cost*SHOT_COUNTER:
 		out_of_energy = false
+	Global.energy = shot
 	emit_signal("shooting",shot)
 	
 func shoot():
@@ -169,14 +173,16 @@ func shoot():
 		shot -= shot_cost*SHOT_COUNTER
 		if shot < shot_cost*SHOT_COUNTER:
 			out_of_energy = true
+	Global.energy = shot
 	emit_signal("shooting",shot)
 	pass
 	
 func run():
-	if shot < shot_cost*SHOT_COUNTER:
+	if shot <= 0:
 		out_of_energy = true
 	else:
 		shot -= .1
+		Global.energy = shot
 		emit_signal("shooting",shot)
 	pass
 	
@@ -185,6 +191,7 @@ func run():
 # Returns true so coin can be cleared in Coin script
 func add_coins(amount):
 	coins += amount
+	Global.emeralds = coins
 	emit_signal("emerald",coins)
 	return true
 	
@@ -193,6 +200,7 @@ func drop_bombs():
 	bomb -= 1
 	if bomb <=0:
 		out_of_bombs = true
+	Global.bombs = bomb
 	emit_signal("bomb",bomb)
 	dropBomb.position = $Position2D.global_position
 	get_parent().add_child(dropBomb)
@@ -201,6 +209,7 @@ func drop_bombs():
 func inc_health(amount):
 	if health < 100:
 		health += amount
+		Global.health = health
 		emit_signal("health_changed", health)
 		
 
