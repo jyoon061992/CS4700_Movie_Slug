@@ -24,7 +24,11 @@ func _on_VisibilityNotifier2D_screen_exited():
 	pass 
 
 func _on_fireball_body_entered(body):
-	if "bomber" in body.name or "shooter" in body.name or "walker" in body.name:
+	# Naming convetion for enemies was ignored so this had to be added in
+	if "bomber" in body.name or "shooter" in body.name or "walker" in body.name or "Enemy" in body.name: 
 		body.decreaseHealth(damage)
-	queue_free()
+		
+	if !"Coin" in body.name:
+		queue_free()
+		
 	pass
