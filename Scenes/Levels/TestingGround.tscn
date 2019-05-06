@@ -3,9 +3,9 @@
 [ext_resource path="res://Scripts/Levels/TestingGround.gd" type="Script" id=1]
 [ext_resource path="res://Art/TileSet/ground tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Enemies/EnemyWalker.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Levels/PortalHome.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=8]
 
@@ -150,10 +150,6 @@ position = Vector2( 1227.46, 100.639 )
 [node name="EnemyWalker9" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1336.14, 116.565 )
 
-[node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 27.0763, 75.9873 )
-Camera_Constraint_Right = 3200
-
 [node name="EnemyWalker10" parent="." instance=ExtResource( 3 )]
 position = Vector2( 544, 128 )
 
@@ -166,14 +162,19 @@ position = Vector2( 259.37, 124.568 )
 [node name="EnemyWalker18" parent="." instance=ExtResource( 3 )]
 position = Vector2( 64, 128 )
 
-[node name="NPC" parent="." instance=ExtResource( 5 )]
+[node name="NPC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 100, 64.8715 )
 collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 
-[node name="PortalHome" parent="." instance=ExtResource( 6 )]
+[node name="PortalHome" parent="." instance=ExtResource( 5 )]
 position = Vector2( 2550.15, -164.667 )
+level_to_teleport_to = "WorldHub"
+
+[node name="player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 27.0763, 75.9873 )
+Camera_Constraint_Right = 3200
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -187,9 +188,9 @@ rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Dialogue" parent="Canvas" instance=ExtResource( 8 )]
 
+[connection signal="body_entered" from="PortalHome" to="PortalHome" method="_on_PortalHome_body_entered"]
 [connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
 [connection signal="died" from="player" to="Canvas/UI" method="_on_player_died"]
 [connection signal="emerald" from="player" to="Canvas/UI" method="_on_player_emerald"]
 [connection signal="health_changed" from="player" to="Canvas/UI" method="_on_player_health_changed"]
 [connection signal="shooting" from="player" to="Canvas/UI" method="_on_player_shooting"]
-[connection signal="body_entered" from="PortalHome" to="PortalHome" method="_on_PortalHome_body_entered"]

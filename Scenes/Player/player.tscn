@@ -66,10 +66,10 @@ position = Vector2( -1, -0.5 )
 shape = SubResource( 2 )
 one_way_collision = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlayerArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 position = Vector2( -1.16227, -0.387421 )
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="PlayerArea2D" to="." method="_on_Area2D_body_entered"]

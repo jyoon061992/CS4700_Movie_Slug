@@ -31,7 +31,8 @@ collision_mask = 2
 isDialogueNPC = true
 
 [node name="Portal" parent="." instance=ExtResource( 3 )]
-position = Vector2( 184.037, 74.1965 )
+position = Vector2( 181.361, 78.1167 )
+level_to_teleport_to = "FifthLevel"
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )
@@ -57,7 +58,7 @@ margin_bottom = 172.117
 
 [connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
 [connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]
-[connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal_body_entered"]
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_Portal5th_body_entered"]
 [connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
 [connection signal="died" from="player" to="Canvas/UI" method="_on_player_died"]
 [connection signal="emerald" from="player" to="Canvas/UI" method="_on_player_emerald"]
