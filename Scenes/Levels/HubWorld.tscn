@@ -51,6 +51,7 @@ margin_bottom = 137.735
 rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="ShopMenu" parent="Canvas" instance=ExtResource( 7 )]
+editor/display_folded = true
 margin_left = 181.361
 margin_top = 78.1167
 margin_right = 355.361

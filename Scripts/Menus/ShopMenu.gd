@@ -7,7 +7,7 @@ func _ready():
 	for i in range(Global.items.size()):
 		var itemBtn = preload("res://Scenes/Menus/Button/ItemButton.tscn").instance()
 		itemBtn._set_item_name(Global.items[i])
-		itemBtn._set_item_price(str(Global.items_price[i]))
+		itemBtn._set_item_price(Global.items_price[i])
 		itemBtn._set_item_index(i)
 		# Testing texture 
 		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+Global.items_icon[0])
