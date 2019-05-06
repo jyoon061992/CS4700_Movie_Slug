@@ -73,8 +73,8 @@ func _physics_process(delta):
 			if "player" in get_slide_collision(i).collider.name and !isDead:
 				if bomber:
 					explode()
-				#if !bomber:
-				#	get_slide_collision(i).collider.take_damage(1)
+				if !bomber:
+					get_slide_collision(i).collider.take_damage(1)
 				break
 	#End  player damage code
 	
@@ -92,7 +92,14 @@ func move():
 	else:
 		$AnimatedSprite.flip_h = true
 		
-	$AnimatedSprite.play("walk")
+	if bomber:
+		$AnimatedSprite.play("bomber_walk")
+		
+	if shooter:
+		$AnimatedSprite.play("shooter_walk")
+		
+	if !bomber and !shooter:
+		$AnimatedSprite.play("walk")
 	
 	velocity = move_and_slide(velocity, FLOOR)
 	
