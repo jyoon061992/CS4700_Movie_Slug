@@ -26,6 +26,3 @@ func _set_item_index(index):
 
 func _purchase_item():
 	print("Player tries to purchase " + item_name + " for $" + str(item_price) + " at index: " + str(item_index))
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

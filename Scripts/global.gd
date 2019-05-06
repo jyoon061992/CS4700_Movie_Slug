@@ -16,8 +16,6 @@ var dialogues = { # Everytime the player talks with an NPC it will be stored her
 var variables = { # Variables used as conditions to know what dialogue block the player should see next. 
 }
 
+var stats = {"health": 100, "emeralds": 0, "energy": 100, "bombs": 3}
 
-var health = 100
-var emeralds = 0
-var energy = 100
-var bombs = 3
+var inventory = {}

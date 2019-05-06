@@ -32,6 +32,7 @@ isDialogueNPC = true
 
 [node name="Portal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 176, 80 )
+level_to_teleport_to = "FifthLevel"
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )

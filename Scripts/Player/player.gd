@@ -26,13 +26,13 @@ export var starting_coins = 0
 export var can_shoot = true
 export var god_mode = false;
 
-var coins = Global.emeralds
-var health = Global.health 
-var shot = Global.energy
+var coins = Global.stats["emeralds"]
+var health = Global.stats["health"]
+var shot = Global.stats["energy"]
 var shot_cost = 5
 var reload_amount = 3
 var dead = false
-var bomb = Global.bombs
+var bomb = Global.stats["bombs"]
 var sprint = false
 
 # When the character dies, we fade the UI
@@ -151,7 +151,7 @@ func take_damage(count):
 		health = 0
 		state = STATES.DEAD
 		emit_signal("died")
-	Global.health = health
+	Global.stats["health"] = health
 	emit_signal("health_changed", health)
 	
 func dead():
@@ -163,7 +163,7 @@ func reload(amount):
 		shot+=amount
 	if shot >= shot_cost*SHOT_COUNTER:
 		out_of_energy = false
-	Global.energy = shot
+	Global.stats["energy"] = shot
 	emit_signal("shooting",shot)
 	
 func shoot():
@@ -173,7 +173,7 @@ func shoot():
 		shot -= shot_cost*SHOT_COUNTER
 		if shot < shot_cost*SHOT_COUNTER:
 			out_of_energy = true
-	Global.energy = shot
+	Global.stats["energy"] = shot
 	emit_signal("shooting",shot)
 	pass
 	
@@ -182,7 +182,7 @@ func run():
 		out_of_energy = true
 	else:
 		shot -= .1
-		Global.energy = shot
+		Global.stats["energy"] = shot
 		emit_signal("shooting",shot)
 	pass
 	
@@ -191,7 +191,7 @@ func run():
 # Returns true so coin can be cleared in Coin script
 func add_coins(amount):
 	coins += amount
-	Global.emeralds = coins
+	Global.stats["emeralds"] = coins
 	emit_signal("emerald",coins)
 	return true
 	
@@ -200,7 +200,7 @@ func drop_bombs():
 	bomb -= 1
 	if bomb <=0:
 		out_of_bombs = true
-	Global.bombs = bomb
+	Global.stats["bombs"] = bomb
 	emit_signal("bomb",bomb)
 	dropBomb.position = $Position2D.global_position
 	get_parent().add_child(dropBomb)
@@ -209,13 +209,13 @@ func drop_bombs():
 func inc_health(amount):
 	if health < 100:
 		health += amount
-		Global.health = health
+		Global.stats["health"] = health
 		emit_signal("health_changed", health)
 		
 
 func reload_bomb(amount):
 	bomb += amount
-	Global.bombs = bomb
+	Global.stats["bombs"] = bomb
 	out_of_bombs = false
 	emit_signal("bomb_changed", bomb)
 	
