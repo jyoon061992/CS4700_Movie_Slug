@@ -62,23 +62,25 @@ margin_top = 74.0
 margin_right = 386.0
 margin_bottom = 93.0
 custom_constants/separation = 30
+alignment = 1
 
 [node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
-margin_right = 70.0
+margin_left = 77.0
+margin_right = 147.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 3 )
 text = "Start Game"
 
 [node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
-margin_left = 100.0
-margin_right = 154.0
+margin_left = 177.0
+margin_right = 231.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 4 )
 text = "Controls"
 
 [node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer2"]
-margin_left = 184.0
-margin_right = 232.0
+margin_left = 261.0
+margin_right = 309.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 3 )
 text = "Credits"
