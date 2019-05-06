@@ -146,3 +146,9 @@ func explode():
 	isDead = true
 	explosion.position = self.position
 
+
+
+func _on_Area2D_body_entered(body):
+	if bomber:
+		if "player" in body.name:
+			explode()

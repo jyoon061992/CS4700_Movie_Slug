@@ -1,7 +1,7 @@
 extends Sprite
 
 onready var animation = get_node("AnimationPlayer")
-var damage = 10
+var damage = 40
 var enemy = false
 # Declare member variables here. Examples:
 # var a = 2
