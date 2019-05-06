@@ -213,6 +213,13 @@ func inc_health(amount):
 		emit_signal("health_changed", health)
 		
 
+func reload_bomb(amount):
+	bomb += amount
+	Global.bombs = bomb
+	out_of_bombs = false
+	emit_signal("bomb_changed", bomb)
+	
+
 func _on_Area2D_body_entered(body):
 	if "shooter" in body.name or "walker" in body.name:
 		take_damage(10)
