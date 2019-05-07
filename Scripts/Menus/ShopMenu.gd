@@ -6,7 +6,7 @@ extends Control
 func _ready():
 	for key in Global.shop_items:
 		var itemBtn = preload("res://Scenes/Menus/Button/ItemButton.tscn").instance()
-		var item = Global.shop_items.get(key)
+		var item = Global.shop_items[key]
 		itemBtn._set_item_name(key)
 		itemBtn._set_item_price(item["item_price"])
 		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+item["item_icon"])
