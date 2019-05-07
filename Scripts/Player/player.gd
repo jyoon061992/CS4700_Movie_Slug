@@ -221,7 +221,7 @@ func reload_bomb(amount):
 	
 
 func _on_Area2D_body_entered(body):
-	if "shooter" in body.name or "walker" in body.name:
+	if "shooter" in body.name or "walker" in body.name or "EnemyWalker" in body.name:
 		take_damage(10)
 	if "bomber" in body.name:
 		take_damage(40)

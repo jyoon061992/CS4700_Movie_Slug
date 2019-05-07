@@ -7,7 +7,7 @@ func _ready():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://Scenes/Levels/HubWorld.tscn")
+	get_tree().change_scene("res://Scenes/Levels/OpeningLevel.tscn")
 	pass
 
 func _on_Button3_pressed():
