@@ -31,13 +31,12 @@ collision_mask = 2
 isDialogueNPC = true
 
 [node name="Portal" parent="." instance=ExtResource( 3 )]
-position = Vector2( 176, 80 )
+position = Vector2( 176, 78.9474 )
 level_to_teleport_to = "FifthLevel"
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 39.4658, 148.458 )
 Camera_Constraint_Right = 368
-can_shoot = false
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -56,6 +55,14 @@ margin_left = 181.361
 margin_top = 78.1167
 margin_right = 355.361
 margin_bottom = 172.117
+
+[node name="Portal3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 289.739, 32.6322 )
+level_to_teleport_to = "Third Level"
+
+[node name="Portal2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 66.5799, 31.5796 )
+level_to_teleport_to = "SecondLevel"
 
 [connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
 [connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]

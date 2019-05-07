@@ -14,19 +14,19 @@ var variables = { # Variables used as conditions to know what dialogue block the
 
 var shop_items = {}
 
-var stats = {"health": 100, "emeralds": 0, "energy": 100, "bombs": 3}
+var stats = {"health": 100, "emeralds": 0, "energy": 100, "bombs": 3, "maxHealth": 100, "maxEnergy":100, "maxJumps":1,"maxShots":1}
 
 var inventory = {}
 
 
 func _ready():
-	addItemsToShop("ShotGun", 1, "sprite_72.png")
-	addItemsToShop("Knife", 1, "sprite_72.png")
-	addItemsToShop("Assault Rifle", 1, "sprite_72.png")
-	addItemsToShop("Grenade Launcher", 1, "sprite_72.png")
-	addItemsToShop("Spear", 1, "sprite_72.png")
-	addItemsToShop("Laser Gun", 1, "sprite_72.png")
-	addItemsToShop("Pocket Watch", 1, "sprite_72.png")
+	addItemsToShop("Health", 10, "sprite_72.png")
+	addItemsToShop("Energy", 10, "sprite_72.png")
+	addItemsToShop("Shots", 25, "sprite_72.png")
+	addItemsToShop("Jumps", 30, "sprite_72.png")
+	addItemsToShop("Bombs", 5, "sprite_72.png")
+#	addItemsToShop("Laser Gun", 1, "sprite_72.png")
+#	addItemsToShop("Pocket Watch", 1, "sprite_72.png")
 	
 func addItemsToShop(item_name, item_price, item_icon):
 	shop_items[item_name] = {"item_price": item_price, "item_icon": item_icon}

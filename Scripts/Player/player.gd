@@ -3,8 +3,8 @@ extends KinematicBody2D
 const SPEED = 60
 const GRAVITY = 10
 const JUMP_POWER = -250
-const JUMP_COUNTER = 1
-const SHOT_COUNTER = 1
+var JUMP_COUNTER = Global.stats["maxJumps"]
+var SHOT_COUNTER = Global.stats["maxShots"]
 const FLOOR = Vector2(0,-1)
 
 const FIREBALL = preload("res://Scenes/Player/fireball.tscn")
@@ -18,13 +18,13 @@ var on_ground = false
 var out_of_energy = false
 var out_of_bombs = false
 
-var jump_count = 0
+var jump_count = Global.stats["maxJumps"]
 
-export var max_health = 100
-export var max_energy = 100
-export var starting_coins = 0
-export var can_shoot = true
-export var god_mode = false;
+var max_health = Global.stats["maxHealth"]
+var max_energy = Global.stats["maxEnergy"]
+var starting_coins = 0
+var can_shoot = true
+var god_mode = false;
 
 var coins = Global.stats["emeralds"]
 var health = Global.stats["health"]
@@ -155,23 +155,30 @@ func take_damage(count):
 	emit_signal("health_changed", health)
 	
 func dead():
-	dead = true
-	$AnimatedSprite.flip_v = true
-
+#	dead = true
+#	$AnimatedSprite.flip_v = true
+	get_tree().change_scene("res://Scenes/Levels/HubWorld.tscn")
+	Global.stats["health"] = Global.stats["maxHealth"] 
+	health = Global.stats["health"]
+	print(health)
+	Global.stats["energy"] = Global.stats["maxEnergy"] 
+	shot = Global.stats["energy"]
+	print(shot)
+	
 func reload(amount):
 	if shot < 100:
 		shot+=amount
-	if shot >= shot_cost*SHOT_COUNTER:
+	if shot >= shot_cost:
 		out_of_energy = false
 	Global.stats["energy"] = shot
 	emit_signal("shooting",shot)
 	
 func shoot():
-	if shot < shot_cost*SHOT_COUNTER:
+	if shot < shot_cost:
 		out_of_energy = true
 	else:
-		shot -= shot_cost*SHOT_COUNTER
-		if shot < shot_cost*SHOT_COUNTER:
+		shot -= shot_cost
+		if shot < shot_cost:
 			out_of_energy = true
 	Global.stats["energy"] = shot
 	emit_signal("shooting",shot)
@@ -207,7 +214,7 @@ func drop_bombs():
 	pass
 	
 func inc_health(amount):
-	if health < 100:
+	if health < max_health:
 		health += amount
 		Global.stats["health"] = health
 		emit_signal("health_changed", health)

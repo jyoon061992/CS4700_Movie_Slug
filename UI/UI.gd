@@ -16,8 +16,8 @@ var animated_emerald = 0
 var animated_bombs = 0
 
 func _ready():
-	var player_max_health = Global.stats["health"]
-	var player_max_energy = Global.stats["energy"]
+	var player_max_health = Global.stats["maxHealth"]
+	var player_max_energy = Global.stats["maxEnergy"]
 	var player_emeralds = Global.stats["emeralds"]
 	var player_bombs = Global.stats["bombs"]
 	bar.max_value = 100
