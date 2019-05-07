@@ -4,14 +4,27 @@ export var SPEED = 200
 export var damage = 1
 var velocity = Vector2()
 var direction = Global.direction.moveRight
+var timer
 
 func _ready():
+	timer = Timer.new()
+	timer.connect("timeout", self, "tick")
+	add_child(timer)
+	timer.wait_time = 0.2
+	timer.start()
+	pass
+	
+func tick():
+#	if self.frame == 0:
+#		self.frame = self.frame + 1
+#	else:
+#		self.frame
 	pass
 	
 func set_fireball_direction(dir):
 	direction = dir
-	if dir == -1:
-		$Sprite.flip_h = true
+#	if dir == -1:
+#		$Sprite.flip_h = true
 	pass
 	
 func _physics_process(delta):

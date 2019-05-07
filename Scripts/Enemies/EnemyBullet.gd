@@ -19,7 +19,7 @@ func setInitialPosition(x_position):
 func setBulletDirection(dir):
 	direction = dir
 	if dir == Global.direction.moveLeft:
-		$AnimatedSprite.flip_h = true
+		$Sprite.flip_h = true
 		
 func setBulletSpeed(speed):
 	SPEED = speed

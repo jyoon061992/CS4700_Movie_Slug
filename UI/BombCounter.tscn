@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Counter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Sprites/Tiles & Others/WeaponSpriteSheet.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 21, 38, 7, 10 )
 
 [node name="Counter" index="0" instance=ExtResource( 1 )]
+margin_top = 0.323532
+margin_bottom = 40.3235
+
+[node name="Icon" parent="Background" index="0"]
+margin_left = -60.5884
+margin_top = -36.7354
+margin_right = -53.5884
+margin_bottom = -26.7354
+rect_scale = Vector2( 7, 7 )
+texture = SubResource( 1 )
+
+[node name="Number" parent="Background" index="1"]
+margin_left = -0.323532
+margin_right = -0.323532
 

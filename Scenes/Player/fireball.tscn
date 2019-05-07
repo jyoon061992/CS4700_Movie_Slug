@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player/fireball.gd" type="Script" id=1]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_69.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/Tiles & Others/WeaponSpriteSheet.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 54, 18, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.86253, 7.41568 )
@@ -10,9 +14,11 @@ extents = Vector2( 7.86253, 7.41568 )
 position = Vector2( 14.0193, 18.5255 )
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.250343, -9.26273 )
-texture = ExtResource( 2 )
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0.449789, -0.499765 )
+scale = Vector2( 1.49977, 1.49977 )
+texture = SubResource( 2 )
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5.72205e-006 )

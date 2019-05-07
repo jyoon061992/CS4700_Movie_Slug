@@ -37,12 +37,13 @@ func move():
 	
 
 func handle_animation():
-	$AnimatedSprite.flip_h = !direction == Global.direction.moveRight
+#	$AnimatedSprite.flip_h = !direction == Global.direction.moveRight
 	
-	if playerOnConnect:
-		$AnimatedSprite.play("idle")
-	else:
-		$AnimatedSprite.play("walk")
+#	if playerOnConnect:
+#		$AnimatedSprite.play("idle")
+#	else:
+#		$AnimatedSprite.play("walk")
+	pass
 
 func handle_collision():
 	if is_on_wall() or !$RayCast2D.is_colliding():
