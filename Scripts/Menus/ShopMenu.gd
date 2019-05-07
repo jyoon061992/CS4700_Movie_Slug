@@ -10,7 +10,7 @@ func _ready():
 		itemBtn._set_item_price(Global.items_price[i])
 		itemBtn._set_item_index(i)
 		# Testing texture 
-		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+Global.items_icon[0])
+		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+Global.items_icon[i])
 		$CenterContainer/GridContainer.add_child(itemBtn)
 	hide()
 
