@@ -45,6 +45,17 @@ func update_bombs(new_value):
 	animated_bombs = new_value
 	pass
 
+func update_variables(stat, new_value):
+	match stat:
+		"Health":
+			update_health(new_value)
+		"Energy":
+			update_energy(new_value)
+		"Bombs":
+			update_bombs(new_value)
+		_:
+			pass
+
 func _process(delta):
 	var round_value = round(animated_health)
 	number_label.text = str(round_value)
@@ -82,7 +93,6 @@ func _on_player_emerald(player_emeralds):
 func _on_player_bomb(bomb):
 	update_bombs(bomb)
 	pass 
-
 
 func _on_player_died():
 	pass # Replace with function body.

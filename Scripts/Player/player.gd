@@ -50,6 +50,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	update_jump_and_shot_counter()
 	if dead == true:
 		return
 	
@@ -102,6 +103,7 @@ func _physics_process(delta):
 #			$AnimatedSprite.play("jump")
 #			velocity.y = JUMP_POWER
 #			on_ground = false
+		print("jump counter: " + str(JUMP_COUNTER))
 		if jump_count < JUMP_COUNTER:
 			jump_count+=1
 			velocity.y=JUMP_POWER
@@ -139,6 +141,10 @@ func _physics_process(delta):
 				break
 	pass
 
+	
+func update_jump_and_shot_counter():
+	JUMP_COUNTER = Global.stats["maxJumps"]
+	SHOT_COUNTER = Global.stats["maxShots"]
 	
 func take_damage(count):
 	if state == STATES.DEAD:

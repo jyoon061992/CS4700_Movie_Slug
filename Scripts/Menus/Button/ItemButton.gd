@@ -1,8 +1,10 @@
 extends Control
 
 # Declare member variables here. Examples:
-var item_name = String()
-var item_price = 0
+var item_name : String = String()
+var item_price : int = 0
+var item_incr : int = 0
+var item_var : String = String()
 
 signal health
 signal energy
@@ -18,7 +20,6 @@ func _ready():
 
 func _set_item_name(name):
 	item_name = name
-	$Button/slot_name.text = name
 	
 func _set_item_price(price):
 	item_price = price
@@ -28,29 +29,26 @@ func _set_item_icon(icon_path):
 	$Button/item_icon.texture = load(icon_path)
 	get_node("Button/item_icon").scale = Vector2(0.75,0.75)
 
+func _set_item_var(item_variable):
+	item_var = item_variable
+
+func _set_item_increment(increment):
+	item_incr = increment
+	
+func _update_name():
+	$Button/slot_name.text = item_name + " (+" + str(item_incr) + ")"
+	
 func _purchase_item():
 	print("Player tries to purchase " + item_name + " for $" + str(item_price))
 	if Global.stats["emeralds"] >= item_price:
 		Global.stats["emeralds"] -= item_price
+		if Global.stats.has(item_var):
+			Global.stats[item_var] += item_incr	
+		elif Global.inventory.has(item_name):
+			Global.inventory[item_name] += item_incr
+		else:
+			Global.inventory[item_name] = item_incr
 		if UI != null:
-			UI._on_player_emerald(Global.stats["emeralds"])
-		if item_name == "Health":
-			Global.stats["maxHealth"] += 10
-			pass
-		if item_name == "Energy":
-			Global.stats["maxEnergy"] += 10
-			pass
-		if item_name == "Shots":
-			Global.stats["maxShots"]+=1
-			pass
-		if item_name == "Jumps":
-			Global.stats["maxJumps"]+=1
-			pass
-		if item_name == "Bombs":
-			Global.stats["bombs"]+=1
-			pass
-#		if Global.inventory.has(item_name):
-#			Global.inventory[item_name] += 1
-#		else:
-#			Global.inventory[item_name] = 1
+			UI.update_emerald(Global.stats["emeralds"])
+			UI.update_variables(item_name, Global.stats[item_var] if Global.stats.has(item_var) else Global.inventory[item_name])
 #		print("Player purchased " + item_name + " totaling of " + str(Global.inventory[item_name]))

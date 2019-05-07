@@ -10,6 +10,9 @@ func _ready():
 		itemBtn._set_item_name(key)
 		itemBtn._set_item_price(item["item_price"])
 		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+item["item_icon"])
+		itemBtn._set_item_var(item["item_var"])
+		itemBtn._set_item_increment(item["item_incr"])
+		itemBtn._update_name()
 		$CenterContainer/GridContainer.add_child(itemBtn)
 	hide()
 

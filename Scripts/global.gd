@@ -20,13 +20,14 @@ var inventory = {}
 
 
 func _ready():
-	addItemsToShop("Health", 10, "sprite_72.png")
-	addItemsToShop("Energy", 10, "sprite_72.png")
-	addItemsToShop("Shots", 25, "sprite_72.png")
-	addItemsToShop("Jumps", 30, "sprite_72.png")
-	addItemsToShop("Bombs", 5, "sprite_72.png")
+	#addItemsToShop(item_name, price, image, stats_variablem, increment)
+	addItemsToShop("Health", 10, "sprite_72.png", "maxHealth", 10)
+	addItemsToShop("Energy", 10, "sprite_72.png", "maxEnergy", 10)
+	addItemsToShop("Shots", 25, "sprite_72.png", "maxShots", 1)
+	addItemsToShop("Jumps", 30, "sprite_72.png", "maxJumps", 1)
+	addItemsToShop("Bombs", 5, "sprite_72.png", "bombs", 1)
 #	addItemsToShop("Laser Gun", 1, "sprite_72.png")
 #	addItemsToShop("Pocket Watch", 1, "sprite_72.png")
 	
-func addItemsToShop(item_name, item_price, item_icon):
-	shop_items[item_name] = {"item_price": item_price, "item_icon": item_icon}
+func addItemsToShop(item_name, item_price, item_icon, item_var, item_incr):
+	shop_items[item_name] = {"item_price": item_price, "item_icon": item_icon, "item_var": item_var, "item_incr": item_incr}
