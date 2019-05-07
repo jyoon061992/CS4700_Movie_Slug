@@ -4,13 +4,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(Global.items.size()):
+	for key in Global.shop_items:
 		var itemBtn = preload("res://Scenes/Menus/Button/ItemButton.tscn").instance()
-		itemBtn._set_item_name(Global.items[i])
-		itemBtn._set_item_price(Global.items_price[i])
-		itemBtn._set_item_index(i)
-		# Testing texture 
-		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+Global.items_icon[i])
+		var item = Global.shop_items.get(key)
+		itemBtn._set_item_name(key)
+		itemBtn._set_item_price(item["item_price"])
+		itemBtn._set_item_icon("res://Art/Sprites/TempCharacters/"+item["item_icon"])
 		$CenterContainer/GridContainer.add_child(itemBtn)
 	hide()
 
