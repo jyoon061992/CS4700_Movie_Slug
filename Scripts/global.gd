@@ -14,7 +14,7 @@ var variables = { # Variables used as conditions to know what dialogue block the
 
 var shop_items = {}
 
-var stats = {"health": 100, "emeralds": 0, "energy": 100, "bombs": 3, "maxHealth": 100, "maxEnergy":100, "maxJumps":1,"maxShots":1}
+var stats = {"health": 100, "emeralds": 1000, "energy": 100, "bombs": 3, "maxHealth": 100, "maxEnergy":100, "maxJumps":1,"maxShots":1}
 
 var inventory = {}
 

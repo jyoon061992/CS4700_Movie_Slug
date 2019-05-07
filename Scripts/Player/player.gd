@@ -3,8 +3,6 @@ extends KinematicBody2D
 const SPEED = 60
 const GRAVITY = 10
 const JUMP_POWER = -250
-var JUMP_COUNTER = Global.stats["maxJumps"]
-var SHOT_COUNTER = Global.stats["maxShots"]
 const FLOOR = Vector2(0,-1)
 
 const FIREBALL = preload("res://Scenes/Player/fireball.tscn")
@@ -18,10 +16,7 @@ var on_ground = false
 var out_of_energy = false
 var out_of_bombs = false
 
-var jump_count = Global.stats["maxJumps"]
-
-var max_health = Global.stats["maxHealth"]
-var max_energy = Global.stats["maxEnergy"]
+var jump_count = 0
 var starting_coins = 0
 var can_shoot = true
 var god_mode = false;
@@ -50,7 +45,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	update_jump_and_shot_counter()
 	if dead == true:
 		return
 	
@@ -103,8 +97,7 @@ func _physics_process(delta):
 #			$AnimatedSprite.play("jump")
 #			velocity.y = JUMP_POWER
 #			on_ground = false
-		print("jump counter: " + str(JUMP_COUNTER))
-		if jump_count < JUMP_COUNTER:
+		if jump_count < Global.stats["maxJumps"]:
 			jump_count+=1
 			velocity.y=JUMP_POWER
 			on_ground = false
@@ -113,7 +106,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and can_shoot:
 		if out_of_energy:
 			return
-		for i in SHOT_COUNTER:
+		for i in Global.stats["maxShots"]:
 			var fireball = FIREBALL.instance()
 			if sign($Position2D.position.x) == 1:
 				fireball.set_fireball_direction(1)
@@ -140,11 +133,6 @@ func _physics_process(delta):
 				#take_damage(1)
 				break
 	pass
-
-	
-func update_jump_and_shot_counter():
-	JUMP_COUNTER = Global.stats["maxJumps"]
-	SHOT_COUNTER = Global.stats["maxShots"]
 	
 func take_damage(count):
 	if state == STATES.DEAD:
@@ -156,6 +144,7 @@ func take_damage(count):
 	if health <= 0:
 		health = 0
 		state = STATES.DEAD
+		dead()
 		emit_signal("died")
 	Global.stats["health"] = health
 	emit_signal("health_changed", health)
@@ -166,13 +155,11 @@ func dead():
 	get_tree().change_scene("res://Scenes/Levels/HubWorld.tscn")
 	Global.stats["health"] = Global.stats["maxHealth"] 
 	health = Global.stats["health"]
-	print(health)
 	Global.stats["energy"] = Global.stats["maxEnergy"] 
 	shot = Global.stats["energy"]
-	print(shot)
 	
 func reload(amount):
-	if shot < 100:
+	if shot < Global.stats["maxEnergy"]:
 		shot+=amount
 	if shot >= shot_cost:
 		out_of_energy = false
@@ -220,7 +207,7 @@ func drop_bombs():
 	pass
 	
 func inc_health(amount):
-	if health < max_health:
+	if health < Global.stats["maxHealth"]:
 		health += amount
 		Global.stats["health"] = health
 		emit_signal("health_changed", health)
