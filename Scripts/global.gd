@@ -26,8 +26,8 @@ func _ready():
 	addItemsToShop("Shots", 25, "sprite_72.png", "maxShots", 1)
 	addItemsToShop("Jumps", 30, "sprite_72.png", "maxJumps", 1)
 	addItemsToShop("Bombs", 5, "sprite_72.png", "bombs", 1)
-#	addItemsToShop("Laser Gun", 1, "sprite_72.png")
-#	addItemsToShop("Pocket Watch", 1, "sprite_72.png")
+	#addItemsToShop("Pocket Watch", 30, "sprite_72.png", "pocketWatch", 1)
+	#ddItemsToShop("Grenade Launcher", 5, "sprite_72.png", "g_launcher", 1)
 	
 func addItemsToShop(item_name, item_price, item_icon, item_var, item_incr):
 	shop_items[item_name] = {"item_price": item_price, "item_icon": item_icon, "item_var": item_var, "item_incr": item_incr}
