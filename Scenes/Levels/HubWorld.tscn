@@ -58,7 +58,7 @@ margin_bottom = 172.117
 
 [node name="Portal3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 289.739, 32.6322 )
-level_to_teleport_to = "Third Level"
+level_to_teleport_to = "ThirdLevel"
 
 [node name="Portal2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 66.5799, 31.5796 )
