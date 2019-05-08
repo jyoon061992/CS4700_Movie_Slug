@@ -39,6 +39,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_EnemyBullet_body_entered(body):
 	if "player" in body.name:
 		body.take_damage(damage)
-	if "player" in body.name or "Background" or "Level" in body.name:
+	if "player" in body.name or "Background" or "Level" or "TileMap" in body.name:
 		queue_free()
 	
