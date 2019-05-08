@@ -20,25 +20,27 @@ tile_data = PoolIntArray( -196611, 9, 0, -196610, 1, 0, -196609, 1, 0, -262144, 
 [node name="Level" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 3
+collision_mask = 3
 format = 1
 tile_data = PoolIntArray( -196611, 1, 0, -196610, 3, 0, -262132, 5, 0, -262131, 1, 0, -131075, 1, 0, -131074, 3, 0, -196596, 5, 0, -196595, 1, 0, -65539, 1, 0, -65538, 3, 0, -131060, 5, 0, -131059, 1, 0, -3, 1, 0, -2, 3, 0, -65524, 5, 0, -65523, 1, 0, 65533, 1, 0, 65534, 3, 0, 3, 3, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 5, 0, 12, 5, 0, 13, 1, 0, 131069, 1, 0, 131070, 3, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 3, 0, 65543, 5, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65548, 5, 0, 65549, 1, 0, 196605, 1, 0, 196606, 3, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 3, 0, 131079, 5, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 5, 0, 131085, 1, 0, 262141, 1, 0, 262142, 3, 0, 196610, 14, 0, 196612, 3, 0, 196613, 15, 0, 196614, 536870927, 0, 196615, 5, 0, 196616, 14, 0, 196620, 5, 0, 196621, 1, 0, 327677, 1, 0, 327678, 3, 0, 262148, 3, 0, 262149, 16, 0, 262150, 536870928, 0, 262151, 5, 0, 262156, 5, 0, 262157, 1, 0, 393213, 1, 0, 393214, 3, 0, 393215, 9, 0, 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 327689, 9, 0, 327690, 9, 0, 327691, 9, 0, 327692, 5, 0, 327693, 1, 0 )
 
 [node name="ShopKeeper" parent="." instance=ExtResource( 2 )]
 position = Vector2( 190, 80 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isShopKeeper = true
 
 [node name="DialogueNPC" parent="." instance=ExtResource( 2 )]
 position = Vector2( 290, 110 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 dialoguePath = "popcorn"
 
 [node name="Streets" parent="." instance=ExtResource( 2 )]
 position = Vector2( 40, 45.1229 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 isSignNPC = true
@@ -46,7 +48,7 @@ dialoguePath = "streets"
 
 [node name="Forrest" parent="." instance=ExtResource( 2 )]
 position = Vector2( 345.114, 45.1229 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 isSignNPC = true
@@ -54,7 +56,7 @@ dialoguePath = "forest"
 
 [node name="Blue" parent="." instance=ExtResource( 2 )]
 position = Vector2( 380, 145.123 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 isSignNPC = true
@@ -62,7 +64,7 @@ dialoguePath = "blue"
 
 [node name="DialogueNPC2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 100, 110 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 dialoguePath = "lobby"
