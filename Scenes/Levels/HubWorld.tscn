@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/TileSet/HubWorld.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player/NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Levels/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Menus/Dialogue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Menus/ShopMenu.tscn" type="PackedScene" id=7]
@@ -14,34 +14,45 @@ position = Vector2( 2.59876e-005, 0 )
 [node name="Background" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 3
+collision_mask = 3
 format = 1
 tile_data = PoolIntArray( -196611, 9, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262139, 1, 0, -262138, 1, 0, -262137, 1, 0, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -262133, 1, 0, -262132, 1, 0, -262131, 9, 0, -131075, 9, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -196602, 1, 0, -196601, 1, 0, -196600, 1, 0, -196599, 1, 0, -196598, 1, 0, -196597, 1, 0, -196596, 1, 0, -196595, 9, 0, -65539, 9, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -131070, 1, 0, -131069, 1, 0, -131068, 1, 0, -131067, 1, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0, -131063, 1, 0, -131062, 1, 0, -131061, 1, 0, -131060, 1, 0, -131059, 9, 0, -3, 9, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 9, 0, 65533, 9, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 12, 0, 5, 12, 0, 6, 12, 0, 7, 12, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 9, 0, 131069, 9, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 12, 0, 65538, 12, 0, 65539, 12, 0, 65540, 12, 0, 65541, 12, 0, 65542, 12, 0, 65543, 12, 0, 65544, 12, 0, 65545, 12, 0, 65546, 12, 0, 65547, 1, 0, 65548, 1, 0, 65549, 9, 0, 196605, 9, 0, 196606, 1, 0, 196607, 12, 0, 131072, 12, 0, 131073, 12, 0, 131074, 12, 0, 131075, 12, 0, 131076, 12, 0, 131077, 12, 0, 131078, 12, 0, 131079, 12, 0, 131080, 12, 0, 131081, 12, 0, 131082, 12, 0, 131083, 12, 0, 131084, 1, 0, 131085, 9, 0, 262141, 14, 0, 262142, 6, 0, 262143, 13, 0, 196608, 12, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 12, 0, 196613, 12, 0, 196614, 12, 0, 196615, 12, 0, 196618, 13, 0, 196619, 13, 0, 196620, 14, 0, 196621, 9, 0, 327677, 9, 0, 327679, 10, 0, 262144, 11, 0, 262145, 10, 0, 262148, 10, 0, 262149, 10, 0, 262150, 11, 0, 262151, 10, 0, 262154, 10, 0, 262155, 11, 0, 262157, 9, 0, 393213, 9, 0, 393214, 9, 0, 327692, 9, 0, 327693, 9, 0 )
 
 [node name="Level" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 3
+collision_mask = 3
 format = 1
 tile_data = PoolIntArray( -196611, 1, 0, -196610, 3, 0, -262132, 5, 0, -262131, 1, 0, -131075, 1, 0, -131074, 3, 0, -196596, 5, 0, -196595, 1, 0, -65539, 1, 0, -65538, 3, 0, -131060, 5, 0, -131059, 1, 0, -3, 1, 0, -2, 3, 0, -65524, 5, 0, -65523, 1, 0, 65533, 1, 0, 65534, 3, 0, 3, 3, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 5, 0, 12, 5, 0, 13, 1, 0, 131069, 1, 0, 131070, 3, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 3, 0, 65543, 5, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65548, 5, 0, 65549, 1, 0, 196605, 1, 0, 196606, 3, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 3, 0, 131079, 5, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 5, 0, 131085, 1, 0, 262141, 1, 0, 262142, 3, 0, 196610, 14, 0, 196612, 3, 0, 196613, 15, 0, 196614, 536870927, 0, 196615, 5, 0, 196616, 14, 0, 196620, 5, 0, 196621, 1, 0, 327677, 1, 0, 327678, 3, 0, 262148, 3, 0, 262149, 16, 0, 262150, 536870928, 0, 262151, 5, 0, 262156, 5, 0, 262157, 1, 0, 393213, 1, 0, 393214, 3, 0, 393215, 9, 0, 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 327689, 9, 0, 327690, 9, 0, 327691, 9, 0, 327692, 5, 0, 327693, 1, 0 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 39.4658, 148.458 )
-Camera_Constraint_Right = 368
-
-[node name="ShopKeeper" parent="." instance=ExtResource( 3 )]
+[node name="ShopKeeper" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 144 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isShopKeeper = true
 
-[node name="DialogueNPC" parent="." instance=ExtResource( 3 )]
+[node name="DialogueNPC" parent="." instance=ExtResource( 2 )]
 position = Vector2( 336, 144 )
-collision_layer = 3
+collision_layer = 2
 collision_mask = 2
 isDialogueNPC = true
 
-[node name="Portal" parent="." instance=ExtResource( 4 )]
+[node name="Portal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 300, 40 )
 level_to_teleport_to = "FifthLevel"
+
+[node name="Portal3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 352, 140 )
+
+[node name="Portal2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, 40 )
+level_to_teleport_to = "SecondLevel"
+
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 39.4658, 148.458 )
+Camera_Constraint_Right = 368
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
@@ -61,17 +72,10 @@ margin_top = 78.1167
 margin_right = 355.361
 margin_bottom = 172.117
 
-[node name="Portal3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 352, 140 )
-
-[node name="Portal2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 80, 40 )
-level_to_teleport_to = "SecondLevel"
-
+[connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
+[connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]
 [connection signal="bomb" from="player" to="Canvas/UI" method="_on_player_bomb"]
 [connection signal="died" from="player" to="Canvas/UI" method="_on_player_died"]
 [connection signal="emerald" from="player" to="Canvas/UI" method="_on_player_emerald"]
 [connection signal="health_changed" from="player" to="Canvas/UI" method="_on_player_health_changed"]
 [connection signal="shooting" from="player" to="Canvas/UI" method="_on_player_shooting"]
-[connection signal="close_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_close_shop"]
-[connection signal="open_shop" from="ShopKeeper" to="Canvas/ShopMenu" method="_on_ShopKeeper_open_shop"]
