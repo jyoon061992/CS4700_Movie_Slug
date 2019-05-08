@@ -1,0 +1,16 @@
+{
+  "first": {
+    "type": "text",
+    "content": "[b]Beware![/b] | There are Dangers ahead.",
+    "next": "0"
+  },
+  "repeat": {
+    "type": "text",
+    "content": "[b]Beware![/b] | There are Dangers ahead. | Don't forget to drop bombs with [i]S[/i]!",
+    "next": "0"
+  },
+  "0": {
+    "type": "text",
+    "content": "You're in the forest of [b]DEATH[/b]"
+  }
+}

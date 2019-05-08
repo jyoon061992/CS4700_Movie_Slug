@@ -4,6 +4,7 @@ onready var dialogue = get_node("../Canvas/Dialogue")
 
 export var isShopKeeper = false
 export var isDialogueNPC = false
+export var isSignNPC = false
 export var dialoguePath : String = "hello_world"
 
 const GRAVITY = 10
@@ -31,19 +32,27 @@ func _physics_process(delta):
 	handle_collision()
 
 func move():
-	velocity.x = 0 if playerOnConnect else SPEED * direction
-	velocity.y += GRAVITY
-	velocity = move_and_slide(velocity, FLOOR)
+	if isSignNPC:
+		$AnimatedSprite.play("sign")
+	else:
+		velocity.x = 0 if playerOnConnect else SPEED * direction
+		velocity.y += GRAVITY
+		velocity = move_and_slide(velocity, FLOOR)
 	
 
 func handle_animation():
-#	$AnimatedSprite.flip_h = !direction == Global.direction.moveRight
-	
-#	if playerOnConnect:
-#		$AnimatedSprite.play("idle")
-#	else:
-#		$AnimatedSprite.play("walk")
-	pass
+	$AnimatedSprite.flip_h = !direction == Global.direction.moveRight
+		
+	if isSignNPC:
+		if playerOnConnect:
+			$AnimatedSprite.play("sign")
+		pass
+	else:
+		if playerOnConnect:
+			$AnimatedSprite.play("idle")
+		else:
+			$AnimatedSprite.play("walk")
+		pass
 
 func handle_collision():
 	if is_on_wall() or !$RayCast2D.is_colliding():

@@ -1,14 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player/NPC.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/TempCharacters/sprite_00.png" type="Texture" id=2]
-[ext_resource path="res://Art/Sprites/Tiles & Others/WeaponSpriteSheet.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/Items/SignTest.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_01.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.45645, 10.9401 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.51442, 11.0052 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "sign",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
 
 [node name="NPC" type="KinematicBody2D"]
 position = Vector2( 0.12851, -4.75495 )
@@ -29,8 +48,7 @@ cast_to = Vector2( 0, 17 )
 position = Vector2( 0.5, 5 )
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 7.62939e-006, -0.250343 )
-texture = ExtResource( 2 )
-normal_map = ExtResource( 3 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "walk"
 
