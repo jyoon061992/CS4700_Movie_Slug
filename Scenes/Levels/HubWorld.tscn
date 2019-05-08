@@ -26,6 +26,7 @@ tile_data = PoolIntArray( -196611, 1, 0, -196610, 3, 0, -262132, 5, 0, -262131, 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 39.4658, 148.458 )
 Camera_Constraint_Right = 368
+Camera_Constraint_Up = 100000000
 
 [node name="ShopKeeper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 240, 144 )
