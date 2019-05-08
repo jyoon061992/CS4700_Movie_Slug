@@ -100,6 +100,9 @@ func move():
 		
 	if !bomber and !shooter:
 		$AnimatedSprite.play("walk")
+		
+	if bomber and shooter:
+		$AnimatedSprite.play("bomber_walk")
 	
 	velocity = move_and_slide(velocity, FLOOR)
 	
