@@ -73,3 +73,4 @@ position = Vector2( -1.16227, -0.387421 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="PlayerArea2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="PlayerArea2D" to="." method="_on_PlayerArea2D_body_exited"]

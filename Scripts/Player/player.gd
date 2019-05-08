@@ -19,7 +19,8 @@ var out_of_bombs = false
 var jump_count = 0
 var starting_coins = 0
 var can_shoot = true
-var god_mode = false;
+var god_mode = false
+var in_enemy = false
 
 var coins = Global.stats["emeralds"]
 var health = Global.stats["health"]
@@ -127,11 +128,9 @@ func _physics_process(delta):
 		
 	velocity = move_and_slide(velocity,FLOOR)
 	
-	if get_slide_count() > 0:
-		for i in range(get_slide_count()):
-			if "EnemyWalker" in get_slide_collision(i).collider.name:
-				#take_damage(1)
-				break
+	if in_enemy:
+		take_damage(.1)
+		
 	pass
 	
 func take_damage(count):
@@ -226,7 +225,12 @@ func reload_bomb(amount):
 
 func _on_Area2D_body_entered(body):
 	if "shooter" in body.name or "walker" in body.name or "EnemyWalker" in body.name:
-		take_damage(10)
+		in_enemy=true
 	if "bomber" in body.name:
-		take_damage(40)
+		take_damage(10)
 	pass
+
+
+func _on_PlayerArea2D_body_exited(body):
+	in_enemy = false
+	pass 

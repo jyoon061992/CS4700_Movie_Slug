@@ -26,11 +26,11 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
-[node name="EnemyWalker" parent="." instance=ExtResource( 3 )]
-position = Vector2( 124.965, 189.938 )
+[node name="bomber" parent="." instance=ExtResource( 3 )]
+position = Vector2( 124.965, 190.938 )
 bomber = true
 
-[node name="EnemyWalker2" parent="." instance=ExtResource( 3 )]
+[node name="bomber2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1449.7, 295.207 )
 bomber = true
 
@@ -53,49 +53,49 @@ position = Vector2( 3054.86, 31.4053 )
 [node name="EnemyWalker41" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3032.8, 111.447 )
 
-[node name="EnemyWalker31" parent="." instance=ExtResource( 3 )]
+[node name="bomber3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2766.21, 300.522 )
 bomber = true
 
-[node name="EnemyWalker32" parent="." instance=ExtResource( 3 )]
+[node name="bomber4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2729.65, 302.413 )
 bomber = true
 
-[node name="EnemyWalker33" parent="." instance=ExtResource( 3 )]
+[node name="bomber5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2459.28, 301.783 )
 bomber = true
 
-[node name="EnemyWalker34" parent="." instance=ExtResource( 3 )]
+[node name="bomber6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2333.23, 302.413 )
 bomber = true
 
-[node name="EnemyWalker35" parent="." instance=ExtResource( 3 )]
+[node name="bomber7" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2216, 298.631 )
 bomber = true
 
-[node name="EnemyWalker36" parent="." instance=ExtResource( 3 )]
+[node name="bomber8" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2454.23, 205.354 )
 bomber = true
 
-[node name="EnemyWalker37" parent="." instance=ExtResource( 3 )]
+[node name="bomber9" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2340.16, 207.245 )
 bomber = true
 
-[node name="EnemyWalker38" parent="." instance=ExtResource( 3 )]
+[node name="bomber10" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2217.26, 206.615 )
 bomber = true
 
 [node name="EnemyWalker39" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2522.3, 127.834 )
 
-[node name="EnemyWalker21" parent="." instance=ExtResource( 3 )]
+[node name="bomber11" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2302.97, 124.551 )
 bomber = true
 
 [node name="EnemyWalker22" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2471.18, 41.065 )
 
-[node name="EnemyWalker23" parent="." instance=ExtResource( 3 )]
+[node name="bomber12" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2349.63, 39.8372 )
 bomber = true
 
@@ -126,7 +126,7 @@ position = Vector2( 1328.15, 298.89 )
 [node name="EnemyWalker28" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1566.33, 300.118 )
 
-[node name="EnemyWalker3" parent="." instance=ExtResource( 3 )]
+[node name="bomber13" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1404.27, -17.8665 )
 bomber = true
 
@@ -142,11 +142,11 @@ position = Vector2( 1172.23, 123.324 )
 [node name="EnemyWalker7" parent="." instance=ExtResource( 3 )]
 position = Vector2( 444.177, 188.394 )
 
-[node name="EnemyWalker8" parent="." instance=ExtResource( 3 )]
+[node name="bomber14" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1050.68, 300.118 )
 bomber = true
 
-[node name="EnemyWalker9" parent="." instance=ExtResource( 3 )]
+[node name="bomber15" parent="." instance=ExtResource( 3 )]
 position = Vector2( 913.174, 298.89 )
 bomber = true
 
