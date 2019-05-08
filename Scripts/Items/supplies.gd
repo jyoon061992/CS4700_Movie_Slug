@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export var amount = 20
+export var amount = 100
 var type = "coin"
 
 # Called when the node enters the scene tree for the first time.

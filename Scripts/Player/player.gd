@@ -161,6 +161,8 @@ func dead():
 func reload(amount):
 	if shot < Global.stats["maxEnergy"]:
 		shot+=amount
+		if shot > Global.stats["maxEnergy"]:
+			shot = Global.stats["maxEnergy"]
 	if shot >= shot_cost:
 		out_of_energy = false
 	Global.stats["energy"] = shot
@@ -209,6 +211,8 @@ func drop_bombs():
 func inc_health(amount):
 	if health < Global.stats["maxHealth"]:
 		health += amount
+		if health > Global.stats["maxHealth"]:
+			health = Global.stats["maxHealth"]
 		Global.stats["health"] = health
 		emit_signal("health_changed", health)
 		

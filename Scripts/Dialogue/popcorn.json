@@ -1,0 +1,21 @@
+{
+   "first": {
+    "type": "text",
+    "content": "I know what you're thinking",
+    "next": "0"
+  },
+  "repeat": {
+    "type": "text",
+    "content": "I know what you're thinking",
+    "next": "0"
+  },
+  "0": {
+    "type": "text",
+    "content": "Yeah, the popcorn is money",
+    "next": "1"
+  },
+  "1": {
+    "type": "text",
+    "content": "That guy is buying"
+  }
+}

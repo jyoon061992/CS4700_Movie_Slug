@@ -1,0 +1,21 @@
+{
+  "first": {
+    "type": "text",
+    "content": "What are you looking at?",
+    "next": "0"
+  },
+  "repeat": {
+    "type": "text",
+    "content": "What do you want?",
+    "next": "0"
+  },
+  "0": {
+    "type": "text",
+    "content": "I'm just here for the leftover popcorn",
+    "next": "1"
+  },
+  "1": {
+    "type": "text",
+    "content": "Don't judge me"
+  }
+}

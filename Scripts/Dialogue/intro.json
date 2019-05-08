@@ -1,0 +1,21 @@
+{
+  "first": {
+    "type": "text",
+    "content": "What are you looking at?",
+    "next": "0"
+  },
+  "repeat": {
+    "type": "text",
+    "content": "What do you want?",
+    "next": "0"
+  },
+  "0": {
+    "type": "text",
+    "content": "Are you heading to the movie theater? I've been hearing weird things happening there",
+    "next": "1"
+  },
+  "1": {
+    "type": "text",
+    "content": "I'd stay away"
+  }
+}

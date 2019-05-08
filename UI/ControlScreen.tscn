@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Art/DY8JzUNVMAAyPW4 - Copy.jpg" type="Texture" id=2]
 [ext_resource path="res://Art/font/Montserrat-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Art/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=4]
 size = 10
@@ -16,6 +17,9 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.27451 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 4 )
 
 [node name="Title Screen" type="Node"]
 script = ExtResource( 1 )
@@ -77,18 +81,17 @@ custom_fonts/font = SubResource( 4 )
 text = "Credits"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 15.0
+margin_left = 14.0
 margin_top = 5.0
-margin_right = 347.0
-margin_bottom = 155.0
+margin_right = 346.0
+margin_bottom = 144.0
 theme = SubResource( 3 )
 custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "	Movement: Arrow Keys
 		left/right: move
 		up: jump
-	
 	Shooting: Space bar
-	
 	Sprint: Hold A
 	Bombs: Press S
 	Reload: Press D"

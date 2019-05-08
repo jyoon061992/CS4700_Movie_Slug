@@ -16,8 +16,8 @@ var animated_emerald = 0
 var animated_bombs = 0
 
 func _ready():
-	var player_max_health = Global.stats["maxHealth"]
-	var player_max_energy = Global.stats["maxEnergy"]
+	var player_max_health = Global.stats["health"]
+	var player_max_energy = Global.stats["energy"]
 	var player_emeralds = Global.stats["emeralds"]
 	var player_bombs = Global.stats["bombs"]
 	bar.max_value = 100
@@ -53,7 +53,6 @@ func update_variables(stat, new_value):
 			update_energy(new_value)
 		"Bombs":
 			update_bombs(new_value)
-		_:
 			pass
 
 func _process(delta):
@@ -95,4 +94,4 @@ func _on_player_bomb(bomb):
 	pass 
 
 func _on_player_died():
-	pass # Replace with function body.
+	pass 
