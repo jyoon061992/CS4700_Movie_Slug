@@ -12,10 +12,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -476.0
-margin_top = -383.0
-margin_right = 3838.0
-margin_bottom = 967.0
+margin_left = -21.0
+margin_top = -382.936
+margin_right = 3627.0
+margin_bottom = 967.064
 texture = ExtResource( 1 )
 stretch_mode = 2
 
@@ -161,7 +161,7 @@ script = ExtResource( 6 )
 shooter = false
 
 [node name="Portal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 3474.79, 109.095 )
+position = Vector2( 3485.6, 93.4241 )
 level_to_teleport_to = "HubWorld"
 
 [node name="player" parent="." instance=ExtResource( 8 )]
