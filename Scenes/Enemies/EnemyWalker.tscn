@@ -1,19 +1,17 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Enemies/EnemyWalker.gd" type="Script" id=1]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_64.png" type="Texture" id=2]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_69.png" type="Texture" id=3]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_70.png" type="Texture" id=4]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_71.png" type="Texture" id=5]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_72.png" type="Texture" id=6]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_14.png" type="Texture" id=7]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_15.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_16.png" type="Texture" id=9]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_17.png" type="Texture" id=10]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_46.png" type="Texture" id=11]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_47.png" type="Texture" id=12]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_48.png" type="Texture" id=13]
-[ext_resource path="res://Art/Sprites/TempCharacters/sprite_49.png" type="Texture" id=14]
+[ext_resource path="res://Art/Sprites/Items/Dead.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_46.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_47.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_48.png" type="Texture" id=5]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_49.png" type="Texture" id=6]
+[ext_resource path="res://Art/Sprites/Items/Bomb_idle.png" type="Texture" id=7]
+[ext_resource path="res://Art/Sprites/Items/Bomb_walk.png" type="Texture" id=8]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_14.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_15.png" type="Texture" id=10]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_16.png" type="Texture" id=11]
+[ext_resource path="res://Art/Sprites/TempCharacters/sprite_17.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,17 +22,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
 "name": "bomber_walk",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "shooter_walk",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "walk",
 "speed": 12.0
 } ]
 
