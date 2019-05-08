@@ -41,7 +41,7 @@ func _on_fireball_body_entered(body):
 	if "bomber" in body.name or "shooter" in body.name or "walker" in body.name or "Enemy" in body.name: 
 		body.decreaseHealth(damage)
 		
-	if !"Coin" in body.name:
+	if !"Coin" or !"supplies" in body.name:
 		queue_free()
 		
 	pass
